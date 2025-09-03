@@ -1,0 +1,589 @@
+/* 従業員メニュー専用スタイル */
+
+/* フルスクリーンレイアウト用のスタイル */
+body.employee-layout {
+    margin: 0;
+    padding: 0;
+    background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+    min-height: 100vh;
+    height: 100vh;
+    overflow: hidden;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+}
+
+.employee-container {
+    min-height: 100vh;
+    height: 100vh;
+    display: flex;
+    flex-direction: column;
+    overflow: hidden;
+}
+
+/* 従業員専用ヘッダー */
+.employee-header {
+    background: rgba(255, 255, 255, 0.95);
+    -webkit-backdrop-filter: blur(10px);
+    backdrop-filter: blur(10px);
+    border-bottom: 1px solid rgba(255, 255, 255, 0.2);
+    padding: 0.4rem 2rem;
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+}
+
+.employee-header-content {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    max-width: 1400px;
+    margin: 0 auto;
+}
+
+.employee-header-left {
+    display: flex;
+    align-items: center;
+    gap: 1.5rem;
+}
+
+.employee-header-left h1 {
+    color: #2c3e50;
+    margin: 0;
+    font-size: 1.2rem;
+    font-weight: 700;
+}
+
+.employee-user-info {
+    display: flex;
+    align-items: center;
+    gap: 0.8rem;
+    background: linear-gradient(135deg, #667eea, #764ba2);
+    padding: 0.4rem 1.2rem;
+    border-radius: 20px;
+    color: white;
+    min-width: 200px;
+}
+
+.employee-user-avatar i {
+    font-size: 1.3rem;
+}
+
+.employee-username {
+    margin: 0;
+    font-size: 0.9rem;
+    font-weight: 600;
+}
+
+.employee-user-role {
+    background: rgba(255, 255, 255, 0.2);
+    padding: 0.15rem 0.5rem;
+    border-radius: 10px;
+    font-size: 0.65rem;
+    white-space: nowrap;
+}
+
+.employee-header-right {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+}
+
+.employee-current-time {
+    background: #2c3e50;
+    color: white;
+    padding: 0.4rem 1rem;
+    border-radius: 16px;
+    font-weight: 600;
+    font-size: 0.75rem;
+}
+
+.employee-theme-toggle {
+    background: #34495e;
+    color: white;
+    border: none;
+    padding: 0.4rem;
+    border-radius: 50%;
+    cursor: pointer;
+    transition: all 0.3s ease;
+}
+
+.employee-theme-toggle:hover {
+    background: #2c3e50;
+    transform: scale(1.1);
+}
+
+.employee-logout-btn {
+    background: #e74c3c;
+    color: white;
+    text-decoration: none;
+    padding: 0.4rem 1rem;
+    border-radius: 16px;
+    font-weight: 600;
+    transition: all 0.3s ease;
+    font-size: 0.85rem;
+}
+
+.employee-logout-btn:hover {
+    background: #c0392b;
+    transform: translateY(-2px);
+}
+
+/* メッセージエリア */
+.employee-message-area {
+    position: fixed;
+    top: 80px;
+    left: 50%;
+    transform: translateX(-50%);
+    z-index: 1000;
+    max-width: 1400px;
+    width: 100%;
+    padding: 0 2rem;
+    pointer-events: none;
+    margin-bottom: 1rem;
+}
+
+.employee-message-area .success-message, 
+.employee-message-area .error-message {
+    padding: 0.6rem 1rem;
+    border-radius: 8px;
+    margin-bottom: 0.3rem;
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    font-weight: 600;
+    font-size: 0.85rem;
+    transition: opacity 0.5s ease-out;
+    pointer-events: auto;
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.15);
+}
+
+/* メインコンテンツ */
+.employee-main-content {
+    flex: 1;
+    display: grid;
+    grid-template-columns: 1fr 320px;
+    gap: 1.2rem;
+    max-width: 1400px;
+    margin: 0 auto;
+    padding: 1rem 2rem 0.8rem 2rem;
+    overflow-y: auto;
+    overflow-x: hidden;
+}
+
+/* 左メインエリア */
+.employee-main-left {
+    display: flex;
+    flex-direction: column;
+    gap: 1.2rem;
+}
+
+/* セクション共通 */
+.employee-section-header {
+    background: rgba(255, 255, 255, 0.95);
+    padding: 0.8rem;
+    border-radius: 12px;
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+    margin-bottom: 0.6rem;
+    margin-top: 0.5rem;
+}
+
+.employee-section-header h2 {
+    margin: 0 0 0.2rem 0;
+    color: #2c3e50;
+    font-size: 1.1rem;
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+}
+
+.employee-section-description {
+    margin: 0;
+    color: #7f8c8d;
+    font-size: 0.8rem;
+}
+
+/* 勤怠打刻セクション */
+.employee-clock-section {
+    background: rgba(255, 255, 255, 0.95);
+    border-radius: 15px;
+    padding: 1.2rem;
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
+}
+
+.employee-clock-buttons {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 1.2rem;
+    margin: 1.2rem 0;
+}
+
+.employee-clock-button-container {
+    display: flex;
+    justify-content: center;
+    width: 100%;
+}
+
+.employee-clock-button {
+    width: 100%;
+    max-width: 300px;
+    height: 60px;
+    border: none;
+    border-radius: 12px;
+    cursor: pointer;
+    position: relative;
+    overflow: hidden;
+    transition: all 0.3s ease;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: center;
+    gap: 0.8rem;
+    font-weight: 700;
+    font-size: 1rem;
+}
+
+.employee-clock-button.check-in {
+    background: linear-gradient(135deg, #4CAF50, #45a049);
+    color: white;
+}
+
+.employee-clock-button.check-out {
+    background: linear-gradient(135deg, #f39c12, #e67e22);
+    color: white;
+}
+
+.employee-clock-button:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 6px 20px rgba(0, 0, 0, 0.3);
+}
+
+.employee-button-icon {
+    font-size: 1.5rem;
+}
+
+.employee-button-text {
+    font-size: 1.1rem;
+}
+
+.employee-clock-info {
+    margin-top: 1.2rem;
+}
+
+.employee-info-card {
+    background: #f8f9fa;
+    padding: 0.8rem;
+    border-radius: 10px;
+    border-left: 4px solid #667eea;
+    display: flex;
+    align-items: flex-start;
+    gap: 0.6rem;
+}
+
+.employee-info-card i {
+    color: #667eea;
+    font-size: 1.2rem;
+    margin-top: 0.1rem;
+}
+
+.employee-info-content h4 {
+    margin: 0 0 0.3rem 0;
+    color: #2c3e50;
+    font-size: 1rem;
+}
+
+.employee-info-content p {
+    margin: 0;
+    color: #7f8c8d;
+    line-height: 1.4;
+    font-size: 0.85rem;
+}
+
+/* 勤怠履歴セクション */
+.employee-history-section {
+    background: rgba(255, 255, 255, 0.95);
+    border-radius: 15px;
+    padding: 1.2rem;
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
+}
+
+.employee-table-container {
+    background: white;
+    border-radius: 10px;
+    overflow: hidden;
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+}
+
+.employee-table-header {
+    background: #f8f9fa;
+    padding: 0.8rem 1.2rem;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    border-bottom: 1px solid #e9ecef;
+}
+
+.employee-table-title {
+    font-weight: 600;
+    color: #2c3e50;
+    display: flex;
+    align-items: center;
+    gap: 0.4rem;
+    font-size: 0.9rem;
+}
+
+.employee-refresh-btn {
+    background: #667eea;
+    color: white;
+    border: none;
+    padding: 0.4rem 0.8rem;
+    border-radius: 15px;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    font-size: 0.8rem;
+}
+
+.employee-refresh-btn:hover {
+    background: #5a6fd8;
+    transform: scale(1.05);
+}
+
+.employee-attendance-table {
+    width: 100%;
+    border-collapse: collapse;
+}
+
+.employee-attendance-table th {
+    background: #f8f9fa;
+    padding: 0.8rem;
+    text-align: left;
+    font-weight: 600;
+    color: #2c3e50;
+    border-bottom: 1px solid #e9ecef;
+    font-size: 0.85rem;
+}
+
+.employee-attendance-table td {
+    padding: 0.8rem;
+    border-bottom: 1px solid #f1f3f4;
+    font-size: 0.85rem;
+}
+
+.employee-attendance-table tr:hover {
+    background: #f8f9fa;
+}
+
+.employee-recent-record {
+    background: #e8f5e8 !important;
+}
+
+/* 右サイドバー */
+.employee-main-right {
+    display: flex;
+    flex-direction: column;
+    gap: 1.2rem;
+}
+
+.employee-today-status-section, 
+.employee-quick-actions-section {
+    background: rgba(255, 255, 255, 0.95);
+    border-radius: 15px;
+    padding: 1.2rem;
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
+}
+
+.employee-status-cards {
+    display: flex;
+    flex-direction: column;
+    gap: 0.8rem;
+}
+
+.employee-status-card {
+    background: white;
+    padding: 1.2rem;
+    border-radius: 12px;
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+    border-left: 4px solid;
+}
+
+.employee-checkin-card {
+    border-left-color: #4CAF50;
+}
+
+.employee-checkout-card {
+    border-left-color: #f39c12;
+}
+
+.employee-workhours-card {
+    border-left-color: #667eea;
+}
+
+.employee-card-header {
+    display: flex;
+    align-items: center;
+    gap: 0.4rem;
+    margin-bottom: 0.8rem;
+    font-weight: 600;
+    color: #2c3e50;
+    font-size: 0.9rem;
+}
+
+.employee-card-value {
+    text-align: center;
+}
+
+.employee-time-display {
+    display: flex;
+    flex-direction: column;
+    gap: 0.2rem;
+}
+
+.employee-time-value {
+    font-size: 1.5rem;
+    font-weight: 700;
+    color: #2c3e50;
+}
+
+.employee-date-display {
+    font-size: 0.8rem;
+    color: #7f8c8d;
+}
+
+.employee-no-record, .employee-working-status {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 0.4rem;
+    color: #7f8c8d;
+}
+
+.employee-no-record i, .employee-working-status i {
+    font-size: 1.5rem;
+}
+
+.employee-quick-actions {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 0.8rem;
+}
+
+.employee-quick-action-btn {
+    background: #f8f9fa;
+    color: #2c3e50;
+    text-decoration: none;
+    padding: 0.8rem;
+    border-radius: 12px;
+    text-align: center;
+    transition: all 0.3s ease;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 0.4rem;
+    font-size: 0.8rem;
+}
+
+.employee-quick-action-btn:hover {
+    background: #667eea;
+    color: white;
+    transform: translateY(-2px);
+}
+
+.employee-quick-action-btn i {
+    font-size: 1.2rem;
+}
+
+/* フッター */
+.employee-footer {
+    background: rgba(255, 255, 255, 0.95);
+    -webkit-backdrop-filter: blur(10px);
+    backdrop-filter: blur(10px);
+    padding: 0.8rem 2rem;
+    margin-top: auto;
+}
+
+.employee-footer-content {
+    max-width: 1400px;
+    margin: 0 auto;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.employee-footer-info p {
+    margin: 0;
+    color: #7f8c8d;
+    font-size: 0.8rem;
+}
+
+.employee-footer-links {
+    display: flex;
+    gap: 1.2rem;
+}
+
+.employee-footer-link {
+    color: #667eea;
+    text-decoration: none;
+    font-weight: 500;
+    font-size: 0.8rem;
+}
+
+.employee-footer-link:hover {
+    text-decoration: underline;
+}
+
+/* レスポンシブデザイン */
+@media (max-width: 1200px) {
+    .employee-main-content {
+        grid-template-columns: 1fr;
+        gap: 1rem;
+    }
+    
+    .employee-main-right {
+        order: -1;
+    }
+}
+
+@media (max-width: 768px) {
+    .employee-header-content {
+        flex-direction: column;
+        gap: 0.8rem;
+    }
+    
+    .employee-clock-buttons {
+        grid-template-columns: 1fr;
+    }
+    
+    .employee-quick-actions {
+        grid-template-columns: 1fr;
+    }
+    
+    .employee-footer-content {
+        flex-direction: column;
+        gap: 0.8rem;
+        text-align: center;
+    }
+}
+
+/* アニメーション */
+@keyframes fadeInUp {
+    from {
+        opacity: 0;
+        transform: translateY(20px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+.employee-section-header, 
+.employee-clock-section, 
+.employee-history-section, 
+.employee-today-status-section, 
+.employee-quick-actions-section {
+    animation: fadeInUp 0.5s ease-out;
+}
+
+.employee-clock-button {
+    animation: fadeInUp 0.6s ease-out;
+}
+
+.employee-status-card {
+    animation: fadeInUp 0.7s ease-out;
+}

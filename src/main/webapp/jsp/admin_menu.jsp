@@ -1,0 +1,305 @@
+<%@ page contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/fmt" prefix="fmt" %>
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>管理者メニュー - 勤怠管理システム</title>
+    <link rel="stylesheet" href="${pageContext.request.contextPath}/style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+</head>
+<body>
+    <div class="container">
+        <header class="page-header">
+            <div class="header-content">
+                <div class="header-left">
+                    <h1><i class="fas fa-user-cog"></i> 管理者メニュー</h1>
+                </div>
+                <div class="user-info">
+                    <div class="user-avatar">
+                        <i class="fas fa-user-shield"></i>
+                    </div>
+                    <div class="user-details">
+                        <h3 class="username"><c:out value="${user.username}"/></h3>
+                        <span class="user-role">管理者</span>
+                    </div>
+                </div>
+            </div>
+        </header>
+
+        <!-- ナビゲーションメニュー -->
+        <nav class="main-nav">
+            <a href="attendance?action=filter" class="nav-link active">
+                <i class="fas fa-chart-line"></i> 勤怠履歴管理
+            </a>
+            <a href="user?action=list" class="nav-link">
+                <i class="fas fa-users"></i> ユーザー管理
+            </a>
+            <a href="logout" class="nav-link logout">
+                <i class="fas fa-sign-out-alt"></i> ログアウト
+            </a>
+        </nav>
+
+        <!-- メッセージ表示エリア -->
+        <div class="message-area">
+            <c:if test="${not empty sessionScope.successMessage}">
+                <div class="success-message">
+                    <c:out value="${sessionScope.successMessage}"/>
+                </div>
+                <c:remove var="successMessage" scope="session"/>
+            </c:if>
+            
+            <c:if test="${not empty errorMessage}">
+                <div class="error-message">
+                    <c:out value="${errorMessage}"/>
+                </div>
+            </c:if>
+        </div>
+
+        <main>
+            <!-- 勤怠履歴フィルター -->
+            <section class="filter-section">
+                <h2>勤怠履歴フィルター</h2>
+                <form action="attendance" method="get" class="filter-form">
+                    <input type="hidden" name="action" value="filter">
+                    
+                    <div class="form-row">
+                        <div class="form-group">
+                            <label for="filterUserId">ユーザーID:</label>
+                            <input type="text" 
+                                   id="filterUserId" 
+                                   name="filterUserId" 
+                                   value="<c:out value="${param.filterUserId}"/>"
+                                   placeholder="すべてのユーザー">
+                        </div>
+                        
+                        <div class="form-group">
+                            <label for="startDate">開始日:</label>
+                            <input type="date" 
+                                   id="startDate" 
+                                   name="startDate" 
+                                   value="<c:out value="${param.startDate}"/>">
+                        </div>
+                        
+                        <div class="form-group">
+                            <label for="endDate">終了日:</label>
+                            <input type="date" 
+                                   id="endDate" 
+                                   name="endDate" 
+                                   value="<c:out value="${param.endDate}"/>">
+                        </div>
+                        
+                        <div class="form-group">
+                            <button type="submit" class="button primary">フィルタ実行</button>
+                        </div>
+                    </div>
+                </form>
+            </section>
+
+            <!-- エクスポート機能 -->
+            <section class="export-section">
+                <h3>データエクスポート</h3>
+                <a href="attendance?action=export_csv&filterUserId=<c:out value="${param.filterUserId}"/>&startDate=<c:out value="${param.startDate}"/>&endDate=<c:out value="${param.endDate}"/>" 
+                   class="button secondary">
+                    📊 CSV エクスポート
+                </a>
+            </section> 
+             <!-- 勤怠サマリー -->
+            <section class="summary-section">
+                <h2>勤怠サマリー</h2>
+                
+                <div class="summary-card">
+                    <h3>合計労働時間</h3>
+                    <div class="table-container">
+                        <table class="summary-table">
+                            <thead>
+                                <tr>
+                                    <th>ユーザーID</th>
+                                    <th>合計労働時間 (時間)</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <c:forEach var="entry" items="${totalHoursByUser}">
+                                    <tr>
+                                        <td><c:out value="${entry.key}"/></td>
+                                        <td>
+                                            <span class="hours-value">${entry.value}</span> 時間
+                                        </td>
+                                    </tr>
+                                </c:forEach>
+                                <c:if test="${empty totalHoursByUser}">
+                                    <tr>
+                                        <td colspan="2" class="no-data">データがありません。</td>
+                                    </tr>
+                                </c:if>
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+            </section>
+
+            <!-- 月別統計グラフ -->
+            <section class="chart-section">
+                <h2>月別統計 (簡易グラフ)</h2>
+                
+                <div class="chart-container">
+                    <div class="chart-item">
+                        <h3>月別合計労働時間</h3>
+                        <div class="bar-chart">
+                            <c:forEach var="entry" items="${monthlyWorkingHours}">
+                                <div class="chart-row">
+                                    <span class="chart-label">${entry.key}:</span>
+                                    <div class="chart-bar">
+                                        <c:forEach begin="1" end="${entry.value / 5}">
+                                            <span class="bar-unit">█</span>
+                                        </c:forEach>
+                                    </div>
+                                    <span class="chart-value">${entry.value}時間</span>
+                                </div>
+                            </c:forEach>
+                            <c:if test="${empty monthlyWorkingHours}">
+                                <div class="no-data">データがありません。</div>
+                            </c:if>
+                        </div>
+                    </div>
+
+                    <div class="chart-item">
+                        <h3>月別出勤日数</h3>
+                        <div class="bar-chart">
+                            <c:forEach var="entry" items="${monthlyCheckInCounts}">
+                                <div class="chart-row">
+                                    <span class="chart-label">${entry.key}:</span>
+                                    <div class="chart-bar">
+                                        <c:forEach begin="1" end="${entry.value}">
+                                            <span class="bar-unit">■</span>
+                                        </c:forEach>
+                                    </div>
+                                    <span class="chart-value">${entry.value}日</span>
+                                </div>
+                            </c:forEach>
+                            <c:if test="${empty monthlyCheckInCounts}">
+                                <div class="no-data">データがありません。</div>
+                            </c:if>
+                        </div>
+                    </div>
+                </div>
+            </section> 
+             <!-- 詳細勤怠履歴 -->
+            <section class="records-section">
+                <h2>詳細勤怠履歴</h2>
+                
+                <div class="table-container">
+                    <table class="records-table">
+                        <thead>
+                            <tr>
+                                <th>従業員ID</th>
+                                <th>出勤時刻</th>
+                                <th>退勤時刻</th>
+                                <th>勤務時間</th>
+                                <th>操作</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <c:forEach var="att" items="${allAttendanceRecords}">
+                                <tr>
+                                    <td><c:out value="${att.userId}"/></td>
+                                    <td>
+                                        <fmt:formatDate value="${att.checkInTime}" pattern="yyyy/MM/dd HH:mm"/>
+                                    </td>
+                                    <td>
+                                        <c:choose>
+                                            <c:when test="${att.checkOutTime != null}">
+                                                <fmt:formatDate value="${att.checkOutTime}" pattern="yyyy/MM/dd HH:mm"/>
+                                            </c:when>
+                                            <c:otherwise>
+                                                <span class="working-status">勤務中</span>
+                                            </c:otherwise>
+                                        </c:choose>
+                                    </td>
+                                    <td>
+                                        <c:choose>
+                                            <c:when test="${att.checkOutTime != null}">
+                                                <!-- 勤務時間計算（簡易版） -->
+                                                <span class="work-hours">計算中</span>
+                                            </c:when>
+                                            <c:otherwise>
+                                                <span class="work-hours">-</span>
+                                            </c:otherwise>
+                                        </c:choose>
+                                    </td>
+                                    <td class="table-actions">
+                                        <form action="attendance" method="post" class="inline-form">
+                                            <input type="hidden" name="action" value="delete_manual">
+                                            <input type="hidden" name="userId" value="${att.userId}">
+                                            <input type="hidden" name="checkInTime" value="${att.checkInTime}">
+                                            <input type="hidden" name="checkOutTime" value="${att.checkOutTime}">
+                                            <button type="submit" 
+                                                    class="button danger small"
+                                                    onclick="return confirm('本当にこの勤怠記録を削除しますか？');">
+                                                🗑️ 削除
+                                            </button>
+                                        </form>
+                                    </td>
+                                </tr>
+                            </c:forEach>
+                            <c:if test="${empty allAttendanceRecords}">
+                                <tr>
+                                    <td colspan="5" class="no-data">データがありません。</td>
+                                </tr>
+                            </c:if>
+                        </tbody>
+                    </table>
+                </div>
+            </section>
+
+            <!-- 勤怠記録の手動追加 -->
+            <section class="manual-add-section">
+                <h2>勤怠記録の手動追加</h2>
+                
+                <form action="attendance" method="post" class="manual-form">
+                    <input type="hidden" name="action" value="add_manual">
+                    
+                    <div class="form-grid">
+                        <div class="form-group">
+                            <label for="manualUserId">ユーザーID *</label>
+                            <input type="text" 
+                                   id="manualUserId" 
+                                   name="userId" 
+                                   required
+                                   placeholder="例: employee1">
+                        </div>
+                        
+                        <div class="form-group">
+                            <label for="manualCheckInTime">出勤時刻 *</label>
+                            <input type="datetime-local" 
+                                   id="manualCheckInTime" 
+                                   name="checkInTime" 
+                                   required>
+                        </div>
+                        
+                        <div class="form-group">
+                            <label for="manualCheckOutTime">退勤時刻</label>
+                            <input type="datetime-local" 
+                                   id="manualCheckOutTime" 
+                                   name="checkOutTime">
+                            <small>※ 空欄の場合は出勤のみ記録されます</small>
+                        </div>
+                    </div>
+                    
+                    <div class="button-group">
+                        <button type="submit" class="button primary">
+                            ➕ 勤怠記録を追加
+                        </button>
+                    </div>
+                </form>
+            </section>
+        </main>
+        
+        <footer class="page-footer">
+            <p>&copy; 2025 勤怠管理システム</p>
+        </footer>
+    </div>
+</body>
+</html>
