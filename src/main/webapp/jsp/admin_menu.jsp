@@ -103,11 +103,8 @@
                 <h3>データエクスポート</h3>
                 <a href="attendance?action=export_csv&filterUserId=<c:out value="${param.filterUserId}"/>&startDate=<c:out value="${param.startDate}"/>&endDate=<c:out value="${param.endDate}"/>" 
                    class="button secondary">
-<<<<<<< HEAD
                     CSV エクスポート
-=======
                     📊 CSV エクスポート
->>>>>>> dfb2b5f9b5c3c0cf3d5f1b510fb8dd5669aaedcd
                 </a>
             </section> 
              <!-- 勤怠サマリー -->
@@ -242,11 +239,8 @@
                                             <button type="submit" 
                                                     class="button danger small"
                                                     onclick="return confirm('本当にこの勤怠記録を削除しますか？');">
-<<<<<<< HEAD
                                                 削除
-=======
                                                 🗑️ 削除
->>>>>>> dfb2b5f9b5c3c0cf3d5f1b510fb8dd5669aaedcd
                                             </button>
                                         </form>
                                     </td>
@@ -269,11 +263,8 @@
                 <form action="attendance" method="post" class="manual-form">
                     <input type="hidden" name="action" value="add_manual">
                     
-<<<<<<< HEAD
                     <div class="form-row">
-=======
                     <div class="form-grid">
->>>>>>> dfb2b5f9b5c3c0cf3d5f1b510fb8dd5669aaedcd
                         <div class="form-group">
                             <label for="manualUserId">ユーザーID *</label>
                             <input type="text" 
@@ -296,20 +287,14 @@
                             <input type="datetime-local" 
                                    id="manualCheckOutTime" 
                                    name="checkOutTime">
-<<<<<<< HEAD
-=======
                             <small>※ 空欄の場合は出勤のみ記録されます</small>
->>>>>>> dfb2b5f9b5c3c0cf3d5f1b510fb8dd5669aaedcd
                         </div>
                     </div>
                     
                     <div class="button-group">
                         <button type="submit" class="button primary">
-<<<<<<< HEAD
                             勤怠記録を追加
-=======
                             ➕ 勤怠記録を追加
->>>>>>> dfb2b5f9b5c3c0cf3d5f1b510fb8dd5669aaedcd
                         </button>
                     </div>
                 </form>

@@ -22,11 +22,8 @@
                         <div class="employee-user-avatar">
                             <i class="fas fa-user-circle"></i>
                         </div>
-<<<<<<< HEAD
                         <div class="employee-user-details">
-=======
                         <div class="user-details">
->>>>>>> dfb2b5f9b5c3c0cf3d5f1b510fb8dd5669aaedcd
                             <h3 class="employee-username">${user.username}</h3>
                             <span class="employee-user-role">従業員</span>
                         </div>
