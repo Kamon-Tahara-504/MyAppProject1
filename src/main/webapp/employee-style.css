@@ -1,0 +1,779 @@
+
+.employee-layout {
+    background: var(--gradient-primary);
+}
+
+.employee-container {
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+}
+
+/* === 従業員ヘッダー === */
+.employee-header {
+    background: #ffffff;
+    color: #000000;
+    padding: var(--spacing-md) var(--spacing-xl);
+    border-bottom: 2px solid #000000;
+}
+
+.employee-header-content {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    max-width: 1400px;
+    margin: 0 auto;
+}
+
+.employee-header-left {
+    display: flex;
+    align-items: center;
+    gap: var(--spacing-xl);
+}
+
+.employee-header-left h1 {
+    font-size: var(--font-size-lg);
+    font-weight: 600;
+    display: flex;
+    align-items: center;
+    gap: var(--spacing-sm);
+}
+
+.employee-user-info {
+    display: flex;
+    align-items: center;
+    gap: 0.75rem;
+}
+
+.employee-user-avatar {
+    width: 45px;
+    height: 45px;
+    background: #000000;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 1.5rem;
+    color: #ffffff;
+}
+
+.employee-user-details {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+}
+
+.employee-username {
+    font-size: var(--font-size-xl);
+    margin: 0;
+    font-weight: 600;
+    line-height: 1.2;
+}
+
+.employee-user-role {
+    font-size: var(--font-size-base);
+    color: #666666;
+    margin: 0;
+    line-height: 1.2;
+}
+
+.employee-header-right {
+    display: flex;
+    align-items: center;
+    gap: var(--spacing-lg);
+}
+
+.employee-current-time {
+    background: rgba(255,255,255,0.15);
+    padding: var(--spacing-sm) var(--spacing-md);
+    border-radius: 20px;
+    font-size: var(--font-size-base);
+    display: flex;
+    align-items: center;
+    gap: var(--spacing-sm);
+}
+
+.header-actions {
+    display: flex;
+    align-items: center;
+    gap: var(--spacing-md);
+}
+
+.employee-theme-toggle {
+    background: rgba(255,255,255,0.2);
+    border: none;
+    color: var(--bg-primary);
+    padding: var(--spacing-sm);
+    border-radius: 50%;
+    width: 40px;
+    height: 40px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    transition: all var(--transition-fast);
+}
+
+.employee-theme-toggle:hover {
+    background: rgba(255,255,255,0.3);
+}
+
+.employee-logout-btn {
+    background: #000000;
+    color: #ffffff;
+    text-decoration: none;
+    padding: 0.6rem 1.2rem;
+    border-radius: 4px;
+    font-size: var(--font-size-base);
+    display: flex;
+    align-items: center;
+    gap: var(--spacing-sm);
+    transition: all var(--transition-fast);
+}
+
+.employee-logout-btn:hover {
+    background: #ffffff;
+    color: #000000;
+    text-decoration: none;
+}
+
+/* === メッセージエリア === */
+.employee-message-area {
+    padding: 0 var(--spacing-xl);
+    max-width: 1400px;
+    margin: 0 auto;
+    margin-top: var(--spacing-md);
+}
+
+/* === メインコンテンツレイアウト === */
+.employee-main-content {
+    flex: 1;
+    padding: var(--spacing-xl);
+    max-width: 1400px;
+    margin: 0 auto;
+    width: 100%;
+    display: grid;
+    grid-template-columns: 2fr 1fr;
+    gap: var(--spacing-xl);
+}
+
+.employee-main-left {
+    display: flex;
+    flex-direction: column;
+    gap: var(--spacing-xl);
+}
+
+.employee-main-right {
+    display: flex;
+    flex-direction: column;
+    gap: var(--spacing-xl);
+}
+
+/* === セクション共通 === */
+.employee-clock-section,
+.employee-history-section,
+.employee-today-status-section,
+.employee-quick-actions-section {
+    background: var(--bg-primary);
+    border-radius: var(--border-radius-xl);
+    padding: var(--spacing-lg);
+    box-shadow: 0 2px 10px rgba(0,0,0,0.08);
+    border: 1px solid var(--border-color);
+}
+
+.employee-section-header {
+    margin-bottom: var(--spacing-lg);
+}
+
+.employee-section-header h2 {
+    color: var(--text-primary);
+    font-size: var(--font-size-xxl);
+    font-weight: 600;
+    display: flex;
+    align-items: center;
+    gap: var(--spacing-sm);
+    margin-bottom: var(--spacing-sm);
+}
+
+.employee-section-description {
+    color: var(--text-muted);
+    font-size: var(--font-size-base);
+    margin: 0;
+}
+
+/* === 勤怠打刻セクション === */
+.employee-clock-buttons {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: var(--spacing-lg);
+    margin-bottom: var(--spacing-xl);
+}
+
+.employee-clock-button-container {
+    display: flex;
+    flex-direction: column;
+}
+
+.employee-clock-button {
+    background: var(--bg-primary);
+    border: 3px solid var(--border-color);
+    border-radius: var(--border-radius-xl);
+    padding: var(--spacing-xl) var(--spacing-md);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: var(--spacing-md);
+    cursor: pointer;
+    transition: all var(--transition-normal);
+    font-family: inherit;
+    min-height: 140px;
+}
+
+.employee-clock-button:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 8px 25px rgba(0,0,0,0.15);
+}
+
+.employee-clock-button.check-in {
+    border-color: var(--success-color);
+}
+
+.employee-clock-button.check-in:hover {
+    border-color: var(--success-hover);
+    background: #f8fff8;
+}
+
+.employee-clock-button.check-out {
+    border-color: var(--danger-color);
+}
+
+.employee-clock-button.check-out:hover {
+    border-color: var(--danger-hover);
+    background: #fff8f8;
+}
+
+.employee-button-icon {
+    font-size: 2.5rem;
+    color: inherit;
+}
+
+.employee-clock-button.check-in .employee-button-icon {
+    color: var(--success-color);
+}
+
+.employee-clock-button.check-out .employee-button-icon {
+    color: var(--danger-color);
+}
+
+.employee-button-text {
+    font-size: 1.2rem;
+    font-weight: 600;
+    color: var(--text-primary);
+}
+
+.employee-clock-info {
+    background: var(--bg-secondary);
+    border-radius: var(--border-radius-lg);
+    padding: var(--spacing-md);
+    border: 1px solid var(--border-color);
+}
+
+.employee-info-card {
+    display: flex;
+    align-items: flex-start;
+    gap: var(--spacing-md);
+}
+
+.employee-info-card i {
+    color: var(--primary-color);
+    font-size: 1.2rem;
+    margin-top: 0.2rem;
+}
+
+.employee-info-content h4 {
+    color: var(--text-primary);
+    font-size: var(--font-size-lg);
+    margin-bottom: var(--spacing-sm);
+}
+
+.employee-info-content p {
+    color: var(--text-muted);
+    font-size: var(--font-size-base);
+    line-height: 1.5;
+    margin: 0;
+}
+
+/* === テーブルコンテナ === */
+.employee-table-container {
+    background: var(--bg-secondary);
+    border-radius: var(--border-radius-lg);
+    border: 1px solid var(--border-color);
+    overflow: hidden;
+}
+
+.employee-table-header {
+    background: var(--primary-color);
+    color: var(--bg-primary);
+    padding: var(--spacing-md) var(--spacing-lg);
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.employee-table-title {
+    font-weight: 600;
+    display: flex;
+    align-items: center;
+    gap: var(--spacing-sm);
+}
+
+.employee-refresh-btn {
+    background: rgba(255,255,255,0.2);
+    border: none;
+    color: var(--bg-primary);
+    padding: var(--spacing-sm);
+    border-radius: var(--border-radius);
+    cursor: pointer;
+    transition: background var(--transition-fast);
+}
+
+.employee-refresh-btn:hover {
+    background: rgba(255,255,255,0.3);
+}
+
+/* === 勤怠テーブル === */
+.employee-attendance-table {
+    width: 100%;
+    border-collapse: collapse;
+    background: var(--bg-primary);
+}
+
+.employee-attendance-table th {
+    background: var(--bg-secondary);
+    color: var(--text-primary);
+    padding: var(--spacing-md);
+    text-align: left;
+    font-weight: 600;
+    border-bottom: 2px solid var(--border-color);
+}
+
+.employee-attendance-table td {
+    padding: var(--spacing-md);
+    border-bottom: 1px solid var(--border-color);
+    vertical-align: middle;
+}
+
+.attendance-row:hover {
+    background: var(--bg-secondary);
+}
+
+.employee-recent-record {
+    background: var(--primary-light);
+}
+
+.date-cell {
+    min-width: 140px;
+}
+
+.date-info {
+    display: flex;
+    flex-direction: column;
+}
+
+.date-main {
+    font-weight: 600;
+    color: var(--text-primary);
+    font-size: 0.95rem;
+}
+
+.day-of-week {
+    color: var(--text-muted);
+    font-size: var(--font-size-sm);
+    margin-top: 0.2rem;
+}
+
+.time-cell {
+    min-width: 100px;
+}
+
+.time-display {
+    display: flex;
+    align-items: center;
+    gap: var(--spacing-sm);
+}
+
+.time-display i {
+    color: var(--primary-color);
+    font-size: var(--font-size-base);
+}
+
+.time-value {
+    font-weight: 600;
+    color: var(--text-primary);
+}
+
+.no-record {
+    color: var(--text-muted);
+    font-style: italic;
+    display: flex;
+    align-items: center;
+    gap: var(--spacing-sm);
+}
+
+.working-status {
+    color: var(--warning-color);
+    font-weight: 600;
+    display: flex;
+    align-items: center;
+    gap: var(--spacing-sm);
+}
+
+.workhours-cell {
+    min-width: 120px;
+}
+
+.work-hours {
+    display: flex;
+    align-items: center;
+    gap: var(--spacing-sm);
+}
+
+.work-hours i {
+    color: var(--primary-color);
+}
+
+.hours,
+.minutes {
+    font-weight: 600;
+    color: var(--text-primary);
+}
+
+.error-status {
+    color: var(--danger-color);
+    font-weight: 600;
+}
+
+.status-cell {
+    min-width: 100px;
+}
+
+.status-badge {
+    padding: 0.4rem 0.8rem;
+    border-radius: 20px;
+    font-size: var(--font-size-sm);
+    font-weight: 500;
+    display: flex;
+    align-items: center;
+    gap: 0.4rem;
+    width: fit-content;
+}
+
+.status-badge.completed {
+    background: var(--success-bg);
+    color: var(--success-text);
+}
+
+.status-badge.working {
+    background: var(--warning-bg);
+    color: var(--warning-text);
+}
+
+.status-badge.incomplete {
+    background: var(--danger-bg);
+    color: var(--danger-text);
+}
+
+/* === 今日の勤怠状況カード === */
+.employee-status-cards {
+    display: flex;
+    flex-direction: column;
+    gap: var(--spacing-md);
+}
+
+.employee-status-card {
+    background: var(--bg-primary);
+    border-radius: var(--border-radius-lg);
+    padding: 1.25rem;
+    border: 2px solid var(--border-color);
+    transition: all var(--transition-fast);
+}
+
+.employee-status-card:hover {
+    border-color: var(--primary-color);
+    box-shadow: 0 4px 15px var(--primary-light);
+}
+
+.employee-card-header {
+    color: var(--text-muted);
+    font-size: var(--font-size-base);
+    font-weight: 500;
+    margin-bottom: var(--spacing-md);
+    display: flex;
+    align-items: center;
+    gap: var(--spacing-sm);
+}
+
+.employee-card-value {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    min-height: 60px;
+}
+
+.employee-time-display {
+    text-align: center;
+}
+
+.employee-time-value {
+    font-size: 1.8rem;
+    font-weight: 700;
+    color: var(--text-primary);
+    margin-bottom: var(--spacing-xs);
+}
+
+.employee-date-display {
+    font-size: var(--font-size-sm);
+    color: var(--text-muted);
+}
+
+.employee-no-record,
+.employee-working-status {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: var(--spacing-sm);
+    color: var(--text-muted);
+}
+
+.employee-no-record i,
+.employee-working-status i {
+    font-size: 1.5rem;
+    color: var(--text-light);
+}
+
+.employee-working-status {
+    color: var(--warning-color);
+}
+
+.employee-working-status i {
+    color: var(--warning-color);
+}
+
+.employee-checkin-card {
+    border-color: var(--success-color);
+}
+
+.employee-checkout-card {
+    border-color: var(--danger-color);
+}
+
+.employee-workhours-card {
+    border-color: var(--primary-color);
+}
+
+/* === クイックアクション === */
+.employee-quick-actions {
+    display: flex;
+    flex-direction: column;
+    gap: 0.75rem;
+}
+
+.employee-quick-action-btn {
+    background: var(--bg-secondary);
+    color: var(--text-primary);
+    text-decoration: none;
+    padding: var(--spacing-md);
+    border-radius: var(--border-radius-lg);
+    border: 1px solid var(--border-color);
+    display: flex;
+    align-items: center;
+    gap: var(--spacing-md);
+    font-weight: 500;
+    transition: all var(--transition-fast);
+}
+
+.employee-quick-action-btn:hover {
+    background: var(--primary-color);
+    color: var(--bg-primary);
+    text-decoration: none;
+    transform: translateX(4px);
+}
+
+.employee-quick-action-btn i {
+    font-size: 1.2rem;
+    width: 20px;
+    text-align: center;
+}
+
+/* === フッター === */
+.employee-footer {
+    background: var(--bg-dark);
+    color: var(--text-light);
+    padding: var(--spacing-lg) var(--spacing-xl);
+    margin-top: auto;
+}
+
+.employee-footer-content {
+    max-width: 1400px;
+    margin: 0 auto;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.employee-footer-info p {
+    margin: 0;
+    font-size: var(--font-size-base);
+}
+
+.employee-footer-links {
+    display: flex;
+    gap: var(--spacing-lg);
+}
+
+.employee-footer-link {
+    color: var(--text-light);
+    text-decoration: none;
+    font-size: var(--font-size-base);
+    transition: color var(--transition-fast);
+}
+
+.employee-footer-link:hover {
+    color: var(--bg-primary);
+    text-decoration: none;
+}
+
+/* === ダークテーマサポート === */
+.dark-theme {
+    background: #1a1a1a;
+    color: #e9ecef;
+}
+
+.dark-theme .employee-clock-section,
+.dark-theme .employee-history-section,
+.dark-theme .employee-today-status-section,
+.dark-theme .employee-quick-actions-section {
+    background: #2d2d2d;
+    border-color: #404040;
+}
+
+.dark-theme .employee-section-header h2 {
+    color: #e9ecef;
+}
+
+.dark-theme .employee-clock-button {
+    background: #2d2d2d;
+    border-color: #404040;
+}
+
+.dark-theme .employee-attendance-table {
+    background: #2d2d2d;
+}
+
+.dark-theme .employee-attendance-table th {
+    background: #404040;
+    color: #e9ecef;
+}
+
+/* === レスポンシブ対応 === */
+@media (max-width: 1200px) {
+    .employee-main-content {
+        grid-template-columns: 1fr;
+        gap: var(--spacing-lg);
+    }
+    
+    .employee-main-right {
+        display: grid;
+        grid-template-columns: repeat(2, 1fr);
+        gap: var(--spacing-lg);
+    }
+}
+
+@media (max-width: 768px) {
+    .employee-header {
+        padding: var(--spacing-md);
+    }
+    
+    .employee-header-content {
+        flex-direction: column;
+        gap: var(--spacing-md);
+        align-items: center;
+    }
+    
+    .employee-header-left {
+        flex-direction: column;
+        gap: var(--spacing-md);
+        text-align: center;
+    }
+    
+    .employee-header-right {
+        flex-direction: column;
+        gap: var(--spacing-md);
+    }
+    
+    .employee-main-content {
+        padding: var(--spacing-md);
+        grid-template-columns: 1fr;
+    }
+    
+    .employee-main-right {
+        grid-template-columns: 1fr;
+    }
+    
+    .employee-clock-buttons {
+        grid-template-columns: 1fr;
+        gap: var(--spacing-md);
+    }
+    
+    .employee-clock-button {
+        padding: var(--spacing-lg) var(--spacing-md);
+        min-height: 120px;
+    }
+    
+    .employee-status-cards {
+        gap: 0.75rem;
+    }
+    
+    .employee-footer-content {
+        flex-direction: column;
+        gap: var(--spacing-md);
+        text-align: center;
+    }
+    
+    .employee-footer-links {
+        justify-content: center;
+    }
+}
+
+@media (max-width: 480px) {
+    .employee-header-left h1 {
+        font-size: 1.2rem;
+    }
+    
+    .employee-current-time {
+        font-size: var(--font-size-sm);
+        padding: 0.4rem 0.8rem;
+    }
+    
+    .employee-attendance-table th,
+    .employee-attendance-table td {
+        padding: 0.75rem var(--spacing-sm);
+        font-size: var(--font-size-base);
+    }
+    
+    .employee-time-value {
+        font-size: 1.5rem;
+    }
+    
+    .employee-clock-button {
+        min-height: 100px;
+    }
+    
+    .employee-button-icon {
+        font-size: 2rem;
+    }
+    
+    .employee-button-text {
+        font-size: var(--font-size-lg);
+    }
+}
