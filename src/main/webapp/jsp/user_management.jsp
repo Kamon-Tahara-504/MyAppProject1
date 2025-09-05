@@ -118,7 +118,11 @@
                             👤 ユーザー編集: <c:out value="${userToEdit.username}"/>
                         </c:when>
                         <c:otherwise>
+<<<<<<< HEAD
                             ユーザー追加
+=======
+                            ➕ ユーザー追加
+>>>>>>> dfb2b5f9b5c3c0cf3d5f1b510fb8dd5669aaedcd
                         </c:otherwise>
                     </c:choose>
                 </h2>
@@ -129,7 +133,11 @@
                         <input type="hidden" name="username" value="${userToEdit.username}">
                     </c:if>
 
+<<<<<<< HEAD
                     <div class="form-row">
+=======
+                    <div class="form-grid">
+>>>>>>> dfb2b5f9b5c3c0cf3d5f1b510fb8dd5669aaedcd
                         <div class="form-group">
                             <label for="username">ユーザーID *</label>
                             <input type="text" 
@@ -155,7 +163,18 @@
                                    <c:if test="${userToEdit == null}">required</c:if>
                                    placeholder="4文字以上で入力"
                                    minlength="4">
+<<<<<<< HEAD
                             <small>4文字以上で入力してください</small>
+=======
+                            <c:choose>
+                                <c:when test="${userToEdit != null}">
+                                    <small class="warning-text">※編集時はパスワードは変更されません。リセットする場合は下のボタンを使用してください。</small>
+                                </c:when>
+                                <c:otherwise>
+                                    <small>4文字以上で入力してください</small>
+                                </c:otherwise>
+                            </c:choose>
+>>>>>>> dfb2b5f9b5c3c0cf3d5f1b510fb8dd5669aaedcd
                         </div>
 
                         <div class="form-group">
@@ -168,10 +187,16 @@
                                     👨‍💻 管理者
                                 </option>
                             </select>
+<<<<<<< HEAD
                             <small>役割を選択してください</small>
                         </div>
 
                         <div class="form-group checkbox-form-group">
+=======
+                        </div>
+
+                        <div class="form-group">
+>>>>>>> dfb2b5f9b5c3c0cf3d5f1b510fb8dd5669aaedcd
                             <div class="checkbox-group">
                                 <input type="checkbox" 
                                        id="enabled" 
@@ -190,22 +215,37 @@
                         <button type="submit" class="button primary">
                             <c:choose>
                                 <c:when test="${userToEdit != null}">
+<<<<<<< HEAD
                                     更新
                                 </c:when>
                                 <c:otherwise>
                                     追加
+=======
+                                    💾 更新
+                                </c:when>
+                                <c:otherwise>
+                                    ➕ 追加
+>>>>>>> dfb2b5f9b5c3c0cf3d5f1b510fb8dd5669aaedcd
                                 </c:otherwise>
                             </c:choose>
                         </button>
                         
                         <c:if test="${userToEdit != null}">
                             <button type="button" class="button secondary" onclick="clearForm()">
+<<<<<<< HEAD
                                 新規追加モード
+=======
+                                🆕 新規追加モード
+>>>>>>> dfb2b5f9b5c3c0cf3d5f1b510fb8dd5669aaedcd
                             </button>
                         </c:if>
                         
                         <button type="reset" class="button secondary">
+<<<<<<< HEAD
                             リセット
+=======
+                            🔄 リセット
+>>>>>>> dfb2b5f9b5c3c0cf3d5f1b510fb8dd5669aaedcd
                         </button>
                     </div>
                 </form>
@@ -213,7 +253,11 @@
                 <!-- パスワードリセット（編集時のみ） -->
                 <c:if test="${userToEdit != null}">
                     <div class="password-reset-section">
+<<<<<<< HEAD
                         <h3>パスワード管理</h3>
+=======
+                        <h3>🔑 パスワード管理</h3>
+>>>>>>> dfb2b5f9b5c3c0cf3d5f1b510fb8dd5669aaedcd
                         <form action="user" method="post" class="reset-form">
                             <input type="hidden" name="action" value="reset_password">
                             <input type="hidden" name="username" value="${userToEdit.username}">
@@ -221,7 +265,11 @@
                             <button type="submit" 
                                     class="button warning"
                                     onclick="return confirmAction('reset_password', '${userToEdit.username}')">
+<<<<<<< HEAD
                                 パスワードを「password」にリセット
+=======
+                                🔑 パスワードを「password」にリセット
+>>>>>>> dfb2b5f9b5c3c0cf3d5f1b510fb8dd5669aaedcd
                             </button>
                         </form>
                     </div>
@@ -229,7 +277,11 @@
             </section>
             <!-- ユーザーリスト -->
             <section class="user-list-section">
+<<<<<<< HEAD
                 <h2>既存ユーザー一覧</h2>
+=======
+                <h2>👥 既存ユーザー一覧</h2>
+>>>>>>> dfb2b5f9b5c3c0cf3d5f1b510fb8dd5669aaedcd
                 
                 <div class="user-stats">
                     <div class="stat-item">
@@ -298,9 +350,15 @@
                                     <td>
                                         <div class="status-controls">
                                             <span class="status-badge ${u.enabled ? 'active' : 'inactive'}">
+<<<<<<< HEAD
                                                 ${u.enabled ? '有効' : '無効'}
                                             </span>
                                             <form action="user" method="post" class="toggle-form">
+=======
+                                                ${u.enabled ? '✅ 有効' : '❌ 無効'}
+                                            </span>
+                                                                                            <form action="user" method="post" class="toggle-form">
+>>>>>>> dfb2b5f9b5c3c0cf3d5f1b510fb8dd5669aaedcd
                                                 <input type="hidden" name="action" value="toggle_enabled">
                                                 <input type="hidden" name="username" value="${u.username}">
                                                 <input type="hidden" name="enabled" value="${!u.enabled}">
@@ -310,10 +368,17 @@
                                                         <c:if test="${u.username == user.username}">disabled title="自分のアカウントは変更できません"</c:if>>
                                                     <c:choose>
                                                         <c:when test="${u.enabled}">
+<<<<<<< HEAD
                                                             無効化
                                                         </c:when>
                                                         <c:otherwise>
                                                             有効化
+=======
+                                                            🚫 無効化
+                                                        </c:when>
+                                                        <c:otherwise>
+                                                            ✅ 有効化
+>>>>>>> dfb2b5f9b5c3c0cf3d5f1b510fb8dd5669aaedcd
                                                         </c:otherwise>
                                                     </c:choose>
                                                 </button>
@@ -324,7 +389,11 @@
                                         <div class="action-buttons">
                                             <a href="user?action=edit&username=${u.username}" 
                                                class="button small primary">
+<<<<<<< HEAD
                                                 編集
+=======
+                                                ✏️ 編集
+>>>>>>> dfb2b5f9b5c3c0cf3d5f1b510fb8dd5669aaedcd
                                             </a>
                                             <form action="user" method="post" class="delete-form">
                                                 <input type="hidden" name="action" value="delete">
@@ -333,7 +402,11 @@
                                                         class="button small danger"
                                                         onclick="return confirmAction('delete', '${u.username}')"
                                                         <c:if test="${u.username == user.username}">disabled title="自分のアカウントは削除できません"</c:if>>
+<<<<<<< HEAD
                                                     削除
+=======
+                                                    🗑️ 削除
+>>>>>>> dfb2b5f9b5c3c0cf3d5f1b510fb8dd5669aaedcd
                                                 </button>
                                             </form>
                                         </div>

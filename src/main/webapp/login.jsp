@@ -6,7 +6,11 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>勤怠管理システム - ログイン</title>
+<<<<<<< HEAD
     <link rel="stylesheet" href="${pageContext.request.contextPath}/style.css">
+=======
+    <link rel="stylesheet" href="style.css">
+>>>>>>> dfb2b5f9b5c3c0cf3d5f1b510fb8dd5669aaedcd
 </head>
 <body>
     <div class="login-container">
