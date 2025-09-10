@@ -1,6 +1,7 @@
 package com.example.attendance.dto;
 
 import java.time.LocalDateTime;
+import java.time.Duration;
 
 /**
  * 勤怠情報を保持するDTOクラス
@@ -32,6 +33,18 @@ public class Attendance {
  
     public void setCheckOutTime(LocalDateTime checkOutTime) {
         this.checkOutTime = checkOutTime;
+    }
+    
+    public String getWorkingHours() {
+        if (checkInTime == null || checkOutTime == null) {
+            return "-";
+        }
+        
+        Duration duration = Duration.between(checkInTime, checkOutTime);
+        long hours = duration.toHours();
+        long minutes = duration.toMinutesPart();
+        
+        return hours + "時間" + minutes + "分";
     }
 }
 

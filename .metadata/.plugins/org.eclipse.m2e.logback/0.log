@@ -1,0 +1,8 @@
+2025-09-10 09:48:21,889 [Worker-6: Loading available Gradle versions] INFO  o.e.b.c.i.u.g.PublishedGradleVersions - Gradle version information cache is not available. Remote download required.
+2025-09-10 09:56:34,395 [main] INFO  org.eclipse.jetty.server.Server - jetty-12.0.16; built: 2024-12-09T21:02:54.535Z; git: c3f88bafb4e393f23204dc14dc57b042e84debc7; jvm 21.0.6+7-LTS
+2025-09-10 09:56:34,419 [main] INFO  o.e.j.server.handler.ContextHandler - Started oeje8n.ContextHandler$CoreContextHandler@21b48fb7{/wse,/wse,b=null,a=AVAILABLE,h=oeje8n.ContextHandler$CoreContextHandler$CoreToNestedHandler@29bbbcd7{STARTED}}
+2025-09-10 09:56:34,419 [main] INFO  o.e.j.s.DefaultSessionIdManager - Session workerName=node0
+2025-09-10 09:56:34,430 [main] INFO  o.e.jetty.server.AbstractConnector - Started ServerConnector@7dd24a05{HTTP/1.1, (http/1.1)}{0.0.0.0:54521}
+2025-09-10 09:56:34,442 [main] INFO  org.eclipse.jetty.server.Server - Started oejs.Server@786f192b{STARTING}[12.0.16,sto=0] @537461ms
+2025-09-10 10:03:13,403 [Framework stop - Equinox Container: 36e563af-ac00-4adc-b4c5-1dafbccb0c79] INFO  org.eclipse.jetty.server.Server - Stopped oejs.Server@786f192b{STOPPING}[12.0.16,sto=0]
+2025-09-10 10:03:13,408 [Framework stop - Equinox Container: 36e563af-ac00-4adc-b4c5-1dafbccb0c79] INFO  o.e.jetty.server.AbstractConnector - Stopped ServerConnector@7dd24a05{HTTP/1.1, (http/1.1)}{0.0.0.0:0}

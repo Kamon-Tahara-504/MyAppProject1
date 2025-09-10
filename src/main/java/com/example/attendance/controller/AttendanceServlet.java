@@ -156,7 +156,7 @@ public class AttendanceServlet extends HttpServlet {
                 System.out.println("DEBUG: User ID: " + user.getUsername());
                 attendanceDAO.checkIn(user.getUsername()); 
                 System.out.println("DEBUG: Check-in successful for user: " + user.getUsername());
-                session.setAttribute("successMessage", "出勤を記録しました。"); 
+                session.setAttribute("successMessage", "✅ 出勤時刻を記録しました！お疲れ様です。"); 
             } catch (Exception e) {
                 System.out.println("DEBUG: Check-in failed for user: " + user.getUsername() + ", Error: " + e.getMessage());
                 System.out.println("DEBUG: Exception type: " + e.getClass().getName());
@@ -168,7 +168,7 @@ public class AttendanceServlet extends HttpServlet {
                 System.out.println("DEBUG: Attempting check-out for user: " + user.getUsername());
                 attendanceDAO.checkOut(user.getUsername()); 
                 System.out.println("DEBUG: Check-out successful for user: " + user.getUsername());
-                session.setAttribute("successMessage", "退勤を記録しました。"); 
+                session.setAttribute("successMessage", "🏠 退勤時刻を記録しました！今日もお疲れ様でした。"); 
             } catch (Exception e) {
                 System.out.println("DEBUG: Check-out failed for user: " + user.getUsername() + ", Error: " + e.getMessage());
                 System.out.println("DEBUG: Exception type: " + e.getClass().getName());
@@ -213,6 +213,35 @@ public class AttendanceServlet extends HttpServlet {
             } else { 
                 session.setAttribute("errorMessage", "勤怠記録の削除に失敗しました。"); 
             } 
+        } else if ("bulk_delete".equals(action) && "admin".equals(user.getRole())) {
+            int deletedCount = 0;
+            int index = 0;
+            
+            while (req.getParameter("records[" + index + "].userId") != null) {
+                String userId = req.getParameter("records[" + index + "].userId");
+                String checkInStr = req.getParameter("records[" + index + "].checkInTime");
+                String checkOutStr = req.getParameter("records[" + index + "].checkOutTime");
+                
+                try {
+                    LocalDateTime checkIn = LocalDateTime.parse(checkInStr);
+                    LocalDateTime checkOut = (checkOutStr != null && !checkOutStr.isEmpty() && !"null".equals(checkOutStr)) 
+                        ? LocalDateTime.parse(checkOutStr) : null;
+                    
+                    if (attendanceDAO.deleteManualAttendance(userId, checkIn, checkOut)) {
+                        deletedCount++;
+                    }
+                } catch (Exception e) {
+                    System.out.println("DEBUG: Failed to delete record for user " + userId + ": " + e.getMessage());
+                }
+                
+                index++;
+            }
+            
+            if (deletedCount > 0) {
+                session.setAttribute("successMessage", deletedCount + "件の勤怠記録を削除しました。");
+            } else {
+                session.setAttribute("errorMessage", "勤怠記録の削除に失敗しました。");
+            }
         } 
 
         System.out.println("DEBUG: Redirecting after action: " + action);

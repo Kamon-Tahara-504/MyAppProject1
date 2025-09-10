@@ -44,14 +44,26 @@ public class AttendanceDAO {
     }
 
     public List<Attendance> findByUserId(String userId) {
+        System.out.println("DEBUG: findByUserId called with userId: " + userId);
+        System.out.println("DEBUG: Total attendance records: " + attendanceRecords.size());
+        
         if (userId == null || userId.isEmpty()) {
+            System.out.println("DEBUG: userId is null or empty, returning empty list");
             return new ArrayList<>();
+        }
+        
+        // デバッグ: 全レコードを確認
+        for (int i = 0; i < attendanceRecords.size(); i++) {
+            Attendance att = attendanceRecords.get(i);
+            System.out.println("DEBUG: Record " + i + ": userId=" + att.getUserId() + 
+                ", checkIn=" + att.getCheckInTime() + ", checkOut=" + att.getCheckOutTime());
         }
         
         List<Attendance> result = attendanceRecords.stream()
                 .filter(att -> userId.equals(att.getUserId()))
                 .collect(Collectors.toList());
         
+        System.out.println("DEBUG: Found " + result.size() + " records for user " + userId);
         return result;
     }
 

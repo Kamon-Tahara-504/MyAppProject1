@@ -131,7 +131,6 @@
                     </c:if>
 
                     <div class="form-row">
-                    <div class="form-grid">
                         <div class="form-group">
                             <label for="username">ユーザーID *</label>
                             <input type="text" 
@@ -157,7 +156,6 @@
                                    <c:if test="${userToEdit == null}">required</c:if>
                                    placeholder="4文字以上で入力"
                                    minlength="4">
-                            <small>4文字以上で入力してください</small>
                             <c:choose>
                                 <c:when test="${userToEdit != null}">
                                     <small class="warning-text">※編集時はパスワードは変更されません。リセットする場合は下のボタンを使用してください。</small>
@@ -203,10 +201,6 @@
                         <button type="submit" class="button primary">
                             <c:choose>
                                 <c:when test="${userToEdit != null}">
-                                    更新
-                                </c:when>
-                                <c:otherwise>
-                                    追加
                                     💾 更新
                                 </c:when>
                                 <c:otherwise>
@@ -217,13 +211,11 @@
                         
                         <c:if test="${userToEdit != null}">
                             <button type="button" class="button secondary" onclick="clearForm()">
-                                新規追加モード
                                 🆕 新規追加モード
                             </button>
                         </c:if>
                         
                         <button type="reset" class="button secondary">
-                            リセット
                             🔄 リセット
                         </button>
                     </div>
@@ -335,10 +327,6 @@
                                                         <c:if test="${u.username == user.username}">disabled title="自分のアカウントは変更できません"</c:if>>
                                                     <c:choose>
                                                         <c:when test="${u.enabled}">
-                                                            無効化
-                                                        </c:when>
-                                                        <c:otherwise>
-                                                            有効化
                                                             🚫 無効化
                                                         </c:when>
                                                         <c:otherwise>
