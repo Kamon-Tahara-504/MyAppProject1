@@ -306,7 +306,7 @@
         </main>
         
         <footer class="page-footer">
-            <p>&copy; 2025 勤怠管理システム</p>
+            <p>&copy; 2025 勤怠管理システム Clockin</p>
         </footer>
     </div>
     

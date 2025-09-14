@@ -115,34 +115,44 @@
         }
     </style>
 </head>
-<body>
+<body class="employee-layout">
     <div class="container">
         <header class="page-header">
             <div class="header-content">
-                <h1><i class="fas fa-clock"></i> 勤怠管理システム</h1>
+                <div class="header-left">
+                    <h1><i class="fas fa-clock"></i> 従業員メニュー</h1>
+                </div>
                 <div class="user-info">
-                    <span class="username">${user.username}</span>
-                    <span class="role">従業員</span>
-                    <a href="logout" class="logout-btn">
-                        <i class="fas fa-sign-out-alt"></i>
-                        ログアウト
-                    </a>
+                    <div class="user-avatar">
+                        <i class="fas fa-user"></i>
+                    </div>
+                    <div class="user-details">
+                        <h3 class="username"><c:out value="${user.username}"/></h3>
+                        <span class="user-role">従業員</span>
+                    </div>
                 </div>
             </div>
         </header>
 
-        <c:if test="${not empty successMessage}">
-            <div class="alert alert-success">
-                <i class="fas fa-check-circle"></i>
-                ${successMessage}
-            </div>
-        </c:if>
-        <c:if test="${not empty errorMessage}">
-            <div class="alert alert-danger">
-                <i class="fas fa-exclamation-triangle"></i>
-                ${errorMessage}
-            </div>
-        </c:if>
+        <!-- ナビゲーションメニュー -->
+        <nav class="main-nav">
+            <a href="attendance?action=filter" class="nav-link active">
+                <i class="fas fa-clock"></i> 勤怠打刻
+            </a>
+            <a href="logout" class="nav-link logout">
+                <i class="fas fa-sign-out-alt"></i> ログアウト
+            </a>
+        </nav>
+
+        <!-- メッセージ表示エリア -->
+        <div class="message-area">
+            <c:if test="${not empty errorMessage}">
+                <div class="error-message">
+                    <c:out value="${errorMessage}"/>
+                </div>
+            </c:if>
+        </div>
+
 
         <main>
             <!-- 勤怠打刻セクション -->
@@ -224,6 +234,10 @@
                 </div>
             </section>
         </main>
+        
+        <footer class="page-footer">
+        	<p>&copy; 2025 勤怠管理システム Clockin </p>
+        </footer>
     </div>
 
     <script>

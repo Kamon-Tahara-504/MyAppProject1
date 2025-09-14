@@ -11,10 +11,6 @@
 </head>
 <body>
     <div class="login-container">
-        <header class="login-header">
-            <h1>勤怠管理システム</h1>
-        </header>
-        
         <main class="login-main">
             <!-- メッセージ表示エリア -->
             <div class="message-area">
@@ -32,6 +28,7 @@
             
             <!-- ログインフォーム -->
             <div class="login-form-container">
+                <h1 class="login-title">Clockin</h1>
                 <form action="${pageContext.request.contextPath}/login" method="post" class="login-form">
                     <fieldset>
                         <legend>ログイン情報</legend>
@@ -72,11 +69,12 @@
                     <li><strong>従業員:</strong> employee2 / password</li>
                 </ul>
             </div>
-        </main>
-        
-        <footer class="login-footer">
-            <p>&copy; 2025 勤怠管理システム</p>
-        </footer>
+            
+            <!-- 著作権表示 -->
+            <footer class="login-footer">
+                <p>&copy; 2025 勤怠管理システム Clockin</p>
+            </footer>
+		</main>
     </div>
 </body>
 </html>

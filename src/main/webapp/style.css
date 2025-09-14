@@ -87,6 +87,8 @@
 html {
     font-size: 16px;
     scroll-behavior: smooth;
+    background: var(--gradient-primary);
+    min-height: 100%;
 }
 
 body {
@@ -95,16 +97,12 @@ body {
     color: var(--text-primary);
     background: var(--gradient-primary);
     min-height: 100vh;
-}
-
-
-.container {
-    max-width: 100%;
     margin: 0;
     padding: 0;
-    background-color: #ffffff;
-    min-height: 100vh;
+    background-attachment: fixed;
 }
+
+
 
 /* ヘッダー */
 .page-header {
@@ -115,6 +113,7 @@ body {
     top: 0;
     z-index: 100;
     padding: 0.8rem 2rem;
+    border-radius: 15px 15px 0 0;
 }
 
 .header-content {
@@ -785,6 +784,7 @@ body {
     border-top: 2px solid #e3f2fd;
     padding: 2rem;
     margin-top: 3rem;
+    border-radius: 0 0 15px 15px;
 }
 
 .footer-content {
@@ -835,34 +835,31 @@ body {
 
 /* ログイン画面専用スタイル */
 .login-container {
-    min-height: 100vh;
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100vw;
+    height: 100vh;
     background: var(--gradient-primary);
-    padding: var(--spacing-md);
+    overflow: hidden;
 }
 
-.login-header {
-    text-align: center;
-    margin-bottom: var(--spacing-xl);
-}
-
-.login-header h1 {
-    color: var(--bg-primary);
-    font-size: var(--font-size-display);
-    font-weight: 700;
-    margin-bottom: var(--spacing-sm);
-}
+/* 古いログインヘッダーは削除済み */
 
 .login-main {
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
     background: var(--bg-primary);
-    border-radius: var(--border-radius-lg);
-    padding: var(--spacing-xxl);
-    box-shadow: var(--shadow-lg);
-    width: 100%;
-    max-width: 450px;
+    border-radius: 15px;
+    padding: 30px;
+    box-shadow: 0 8px 32px rgba(0, 0, 0, 0.2);
+    width: 420px;
+    height: 700px; 
+    display: flex;
+    flex-direction: column;
+    z-index: 1000;
 }
 
 .message-area {
@@ -890,23 +887,7 @@ body {
     background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
 }
 
-.login-header {
-    background: rgba(255, 255, 255, 0.95);
-    -webkit-backdrop-filter: blur(10px);
-    backdrop-filter: blur(10px);
-    border-bottom: 2px solid #2196f3;
-    box-shadow: 0 2px 8px rgba(33, 150, 243, 0.1);
-    padding: 0.5rem 2rem;
-    flex-shrink: 0;
-}
-
-.login-header h1 {
-    color: #2196f3;
-    font-size: 1.3rem;
-    font-weight: 600;
-    margin: 0;
-    text-align: center;
-}
+/* 古いログインヘッダーは削除済み */
 
 .login-main {
     flex: 1;
@@ -921,14 +902,21 @@ body {
 }
 
 .login-form-container {
-    background: rgba(255, 255, 255, 0.95);
-    -webkit-backdrop-filter: blur(10px);
-    backdrop-filter: blur(10px);
-    border-radius: 15px;
-    padding: 2rem;
-    box-shadow: 0 8px 32px rgba(0, 0, 0, 0.1);
     width: 100%;
-    max-width: 400px;
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+}
+
+.login-title {
+    color: #2196f3;
+    font-size: 1.8rem;
+    font-weight: 700;
+    text-align: center;
+    margin: 0 0 2rem 0;
+    padding-bottom: 1rem;
+    border-bottom: 2px solid #e3f2fd;
 }
 
 .login-form fieldset {
@@ -1052,22 +1040,36 @@ body {
 }
 
 .login-footer {
-    margin-top: var(--spacing-xl);
+    margin-top: 20px;
     text-align: center;
+    padding-top: 15px;
+    border-top: 1px solid #e0e0e0;
 }
 
 .login-footer p {
-    color: rgba(255, 255, 255, 0.8);
-    font-size: var(--font-size-base);
+    color: #7f8c8d;
+    font-size: 0.9rem;
+    margin: 0;
 }
 
 /* === 共通レイアウト === */
 .container {
     max-width: 1200px;
-    margin: 0 auto;
+    margin: 2rem auto;
     padding: 0;
-    background: var(--bg-primary);
-    min-height: 100vh;
+    background: rgba(255, 255, 255, 0.95);
+    -webkit-backdrop-filter: blur(10px);
+    backdrop-filter: blur(10px);
+    min-height: calc(100vh - 4rem);
+    border-radius: 15px;
+    box-shadow: 0 8px 32px rgba(0, 0, 0, 0.1);
+    overflow: hidden;
+    transition: all 0.3s ease;
+}
+
+.container:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 12px 40px rgba(0, 0, 0, 0.15);
 }
 
 /* === ヘッダー === */
@@ -1130,13 +1132,17 @@ body {
     display: flex;
     align-items: center;
     gap: var(--spacing-sm);
-    transition: all var(--transition-fast);
+    transition: all 0.3s ease;
+    position: relative;
+    overflow: hidden;
 }
 
 .nav-link:hover,
 .nav-link.active {
     background: #ffffff;
     color: #000000;
+    transform: translateY(-2px);
+    box-shadow: 0 4px 15px rgba(255, 255, 255, 0.3);
 }
 
 .nav-link.logout {
@@ -1147,6 +1153,8 @@ body {
 .nav-link.logout:hover {
     background: #ffffff;
     color: #000000;
+    transform: translateY(-2px);
+    box-shadow: 0 4px 15px rgba(255, 255, 255, 0.3);
 }
 
 /* === メインコンテンツ === */
@@ -1155,11 +1163,19 @@ main {
 }
 
 section {
-    background: var(--bg-primary);
+    background: rgba(255, 255, 255, 0.8);
+    -webkit-backdrop-filter: blur(5px);
+    backdrop-filter: blur(5px);
     border-radius: var(--border-radius-lg);
     padding: var(--spacing-lg);
     margin-bottom: var(--spacing-xl);
     box-shadow: var(--shadow-sm);
+    transition: all 0.3s ease;
+}
+
+section:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 8px 25px rgba(0, 0, 0, 0.1);
 }
 
 section h2 {
@@ -1177,10 +1193,20 @@ section h3 {
 /* === フォーム === */
 .filter-form,
 .manual-form {
-    background: var(--bg-secondary);
+    background: rgba(248, 249, 250, 0.8);
+    -webkit-backdrop-filter: blur(5px);
+    backdrop-filter: blur(5px);
     padding: var(--spacing-lg);
     border-radius: 6px;
     border: 1px solid var(--border-color);
+    transition: all 0.3s ease;
+}
+
+.filter-form:hover,
+.manual-form:hover {
+    transform: translateY(-1px);
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+    border-color: var(--primary-color);
 }
 
 .form-row {
@@ -1293,14 +1319,21 @@ section h3 {
     border: 1px solid var(--border-color-dark);
     border-radius: var(--border-radius);
     font-size: var(--font-size-base);
-    transition: border-color var(--transition-fast);
+    transition: all 0.3s ease;
 }
 
 .form-group input:focus,
 .form-group select:focus {
     outline: none;
     border-color: var(--primary-color);
-    box-shadow: 0 0 0 2px var(--primary-light);
+    box-shadow: 0 0 0 3px var(--primary-light);
+    transform: translateY(-1px);
+}
+
+.form-group input:hover,
+.form-group select:hover {
+    border-color: var(--primary-color);
+    box-shadow: 0 2px 8px rgba(102, 126, 234, 0.1);
 }
 
 .form-group small {
@@ -1414,9 +1447,11 @@ section h3 {
     display: inline-flex;
     align-items: center;
     gap: var(--spacing-sm);
-    transition: all var(--transition-fast);
+    transition: all 0.3s ease;
     text-align: center;
     justify-content: center;
+    position: relative;
+    overflow: hidden;
 }
 
 .button.primary {
@@ -1426,6 +1461,8 @@ section h3 {
 
 .button.primary:hover {
     background: var(--primary-hover);
+    transform: translateY(-2px);
+    box-shadow: 0 4px 15px rgba(102, 126, 234, 0.3);
 }
 
 .button.secondary {
@@ -1435,6 +1472,8 @@ section h3 {
 
 .button.secondary:hover {
     background: var(--secondary-hover);
+    transform: translateY(-2px);
+    box-shadow: 0 4px 15px rgba(108, 117, 125, 0.3);
 }
 
 .button.warning {
@@ -1444,6 +1483,8 @@ section h3 {
 
 .button.warning:hover {
     background: var(--warning-hover);
+    transform: translateY(-2px);
+    box-shadow: 0 4px 15px rgba(243, 156, 18, 0.3);
 }
 
 .button.danger {
@@ -1453,6 +1494,8 @@ section h3 {
 
 .button.danger:hover {
     background: var(--danger-hover);
+    transform: translateY(-2px);
+    box-shadow: 0 4px 15px rgba(231, 76, 60, 0.3);
 }
 
 .button.success {
@@ -1462,6 +1505,8 @@ section h3 {
 
 .button.success:hover {
     background: var(--success-hover);
+    transform: translateY(-2px);
+    box-shadow: 0 4px 15px rgba(39, 174, 96, 0.3);
 }
 
 .button.small {
@@ -1480,6 +1525,15 @@ section h3 {
     overflow-x: auto;
     border-radius: 6px;
     border: 1px solid var(--border-color);
+    background: rgba(255, 255, 255, 0.8);
+    -webkit-backdrop-filter: blur(5px);
+    backdrop-filter: blur(5px);
+    transition: all 0.3s ease;
+}
+
+.table-container:hover {
+    transform: translateY(-1px);
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
 }
 
 .records-table,
@@ -1512,6 +1566,9 @@ section h3 {
 .records-table tr:hover,
 .users-table tr:hover {
     background: var(--bg-secondary);
+    transform: translateY(-1px);
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+    transition: all 0.3s ease;
 }
 
 .working-status {
@@ -1587,6 +1644,13 @@ section h3 {
     padding: var(--spacing-lg);
     border-radius: 6px;
     border: 1px solid var(--border-color);
+    transition: all 0.3s ease;
+}
+
+.chart-item:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 4px 15px rgba(102, 126, 234, 0.2);
+    border-color: var(--primary-color);
 }
 
 .bar-chart {
@@ -1651,6 +1715,13 @@ section h3 {
     border-radius: 6px;
     text-align: center;
     border: 1px solid var(--border-color);
+    transition: all 0.3s ease;
+}
+
+.stat-item:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 4px 15px rgba(102, 126, 234, 0.2);
+    border-color: var(--primary-color);
 }
 
 .stat-value {
@@ -1702,21 +1773,42 @@ section h3 {
 /* === レスポンシブ対応 === */
 @media (max-width: 768px) {
     .container {
-        margin: 0;
+        margin: 1rem auto;
+        border-radius: 10px;
     }
     
     .page-header {
         padding: var(--spacing-md);
-    background: linear-gradient(135deg, #667eea, #764ba2);
-    color: white;
-    border: none;
-    padding: 0.8rem;
-    border-radius: 8px;
-    font-size: 1rem;
-    font-weight: 600;
-    cursor: pointer;
-    transition: all 0.3s ease;
-}
+        border-radius: 10px 10px 0 0;
+    }
+    
+    .page-footer {
+        border-radius: 0 0 10px 10px;
+    }
+    
+    /* モバイルではホバーエフェクトを軽減 */
+    .button:hover,
+    .nav-link:hover,
+    .form-group input:hover,
+    .form-group select:hover,
+    .records-table tr:hover,
+    .users-table tr:hover,
+    section:hover,
+    .table-container:hover,
+    .stat-item:hover,
+    .chart-item:hover,
+    .filter-form:hover,
+    .manual-form:hover {
+        transform: none;
+        box-shadow: none;
+    }
+    
+    /* タッチデバイス用のアクティブ状態 */
+    .button:active,
+    .nav-link:active {
+        transform: translateY(1px);
+        box-shadow: 0 2px 8px rgba(0, 0, 0, 0.2);
+    }
 
 .login-button:hover {
     transform: translateY(-2px);
@@ -1763,20 +1855,7 @@ section h3 {
     color: #2c3e50;
 }
 
-.login-footer {
-    background: rgba(255, 255, 255, 0.95);
-    -webkit-backdrop-filter: blur(10px);
-    backdrop-filter: blur(10px);
-    padding: 0.8rem 2rem;
-    text-align: center;
-    flex-shrink: 0;
-}
-
-.login-footer p {
-    margin: 0;
-    color: #7f8c8d;
-    font-size: 0.8rem;
-}
+/* 古いフッタースタイルは削除済み */
 
 /* レスポンシブデザイン */
 @media (max-width: 1200px) {
@@ -1834,7 +1913,6 @@ section h3 {
     }
     
     .user-form-row .form-group {
-        min-height: auto;
         height: auto;
     }
     
@@ -1844,7 +1922,6 @@ section h3 {
     }
     
     .user-form-row .checkbox-form-group {
-        min-height: auto;
         justify-content: flex-start;
     }
     
@@ -1870,14 +1947,14 @@ section h3 {
     }
     
     .login-main {
-        padding: var(--spacing-lg);
-        margin: 0 var(--spacing-md);
+        width: 380px;
+        height: 650px;
+        padding: 25px;
     }
     
-    .login-header h1 {
-        font-size: 2rem;
-        gap: 1rem;
-        text-align: center;
+    .login-title {
+        font-size: 1.5rem;
+        margin-bottom: 1.5rem;
     }
     
     .header-left {
@@ -1936,7 +2013,16 @@ section h3 {
     }
     
     .login-main {
-        padding: var(--spacing-md);
+        width: 320px;
+        height: 700px;
+        padding: 20px;
+    }
+    
+    .login-title {
+        font-size: 1.3rem;
+        margin-bottom: 1rem;
+    }
+    
     .page-header {
         padding: 0.75rem;
     }
@@ -2255,4 +2341,443 @@ section h3 {
     .button-extra-large .button-time {
         font-size: 1rem;
     }
+}
+
+/* ========================================
+   従業員メニュー専用スタイル
+   ======================================== */
+
+/* 従業員画面用のbodyクラス */
+body.employee-layout {
+    margin: 0;
+    padding: 0;
+    background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+    min-height: 100vh;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    background-attachment: fixed;
+}
+
+html.employee-layout {
+    background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+    min-height: 100%;
+}
+
+/* 従業員画面のコンテナ（既存の.containerクラスをオーバーライド） */
+body.employee-layout .container {
+    min-height: calc(100vh - 4rem);
+    display: flex;
+    flex-direction: column;
+    margin: 2rem auto;
+    max-width: 1200px;
+    background: rgba(255, 255, 255, 0.95);
+    -webkit-backdrop-filter: blur(10px);
+    backdrop-filter: blur(10px);
+    border-radius: 15px;
+    box-shadow: 0 8px 32px rgba(0, 0, 0, 0.1);
+    overflow: hidden;
+    transition: all 0.3s ease;
+}
+
+body.employee-layout .container:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 12px 40px rgba(0, 0, 0, 0.15);
+}
+
+/* === 従業員ヘッダー（管理者メニューと同じデザイン） === */
+body.employee-layout .page-header {
+    background: linear-gradient(135deg, #ffffff 0%, #f8f9fa 100%);
+    border-bottom: 2px solid #2196f3;
+    box-shadow: 0 2px 8px rgba(33, 150, 243, 0.1);
+    position: sticky;
+    top: 0;
+    z-index: 100;
+    padding: 0.8rem 2rem;
+    border-radius: 15px 15px 0 0;
+}
+
+body.employee-layout .header-content {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    max-width: 1400px;
+    margin: 0 auto;
+}
+
+body.employee-layout .header-left {
+    display: flex;
+    align-items: center;
+    gap: 1.5rem;
+}
+
+body.employee-layout .header-left h1 {
+    color: #2196f3;
+    font-size: 1.5rem;
+    font-weight: 600;
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+}
+
+body.employee-layout .user-info {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+}
+
+body.employee-layout .user-avatar {
+    width: 50px;
+    height: 50px;
+    background: linear-gradient(135deg, #2196f3, #64b5f6);
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: white;
+    font-size: 1.5rem;
+}
+
+body.employee-layout .user-details {
+    display: flex;
+    flex-direction: column;
+    gap: 0.25rem;
+}
+
+body.employee-layout .username {
+    font-size: 1.2rem;
+    font-weight: 600;
+    color: #2196f3;
+    margin: 0;
+    line-height: 1.2;
+}
+
+body.employee-layout .user-role {
+    font-size: 0.8rem;
+    color: #888;
+    background: #e3f2fd;
+    padding: 0.25rem 0.5rem;
+    border-radius: 12px;
+    border: 1px solid #bbdefb;
+    margin: 0;
+    line-height: 1.2;
+}
+
+/* === 従業員ナビゲーションメニュー（管理者メニューと同じデザイン） === */
+body.employee-layout .main-nav {
+    background: #000000;
+    padding: 0 2rem;
+    display: flex;
+    gap: 0.5rem;
+}
+
+body.employee-layout .nav-link {
+    color: #ffffff;
+    text-decoration: none;
+    padding: 1rem 1.5rem;
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    transition: all 0.3s ease;
+    position: relative;
+    overflow: hidden;
+}
+
+body.employee-layout .nav-link:hover,
+body.employee-layout .nav-link.active {
+    background: #ffffff;
+    color: #000000;
+    transform: translateY(-2px);
+    box-shadow: 0 4px 15px rgba(255, 255, 255, 0.3);
+}
+
+body.employee-layout .nav-link.logout {
+    margin-left: auto;
+    color: #ffffff;
+}
+
+body.employee-layout .nav-link.logout:hover {
+    background: #ffffff;
+    color: #000000;
+    transform: translateY(-2px);
+    box-shadow: 0 4px 15px rgba(255, 255, 255, 0.3);
+}
+
+/* === 従業員メッセージエリア（管理者メニューと同じデザイン） === */
+body.employee-layout .message-area {
+    padding: 0.5rem 2rem;
+    max-width: 1400px;
+    margin: 0 auto;
+}
+
+body.employee-layout .success-message, 
+body.employee-layout .error-message {
+    padding: 0.8rem 1.2rem;
+    border-radius: 8px;
+    display: flex;
+    align-items: center;
+    gap: 0.6rem;
+    font-weight: 500;
+    margin-bottom: 0.5rem;
+    font-size: 0.9rem;
+}
+
+body.employee-layout .success-message {
+    background-color: #e8f5e8;
+    color: #2e7d32;
+    border: 2px solid #a5d6a7;
+}
+
+body.employee-layout .error-message {
+    background-color: #ffebee;
+    color: #c62828;
+    border: 2px solid #ef9a9a;
+}
+
+/* === 従業員フッター（管理者メニューと同じデザイン） === */
+body.employee-layout .page-footer {
+    background: #f8f9fa;
+    border-top: 2px solid #e3f2fd;
+    padding: 2rem;
+    margin-top: 3rem;
+    border-radius: 0 0 15px 15px;
+}
+
+body.employee-layout .page-footer p {
+    color: #666;
+    font-size: 0.9rem;
+    text-align: center;
+    margin: 0;
+}
+
+/* === 従業員画面のセクション（既存のクラス名を使用） === */
+body.employee-layout .attendance-section,
+body.employee-layout .history-section {
+    background: rgba(255, 255, 255, 0.8);
+    -webkit-backdrop-filter: blur(5px);
+    backdrop-filter: blur(5px);
+    border-radius: 15px;
+    padding: 1.2rem;
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
+    transition: all 0.3s ease;
+    margin-bottom: 2rem;
+}
+
+body.employee-layout .attendance-section:hover,
+body.employee-layout .history-section:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 8px 25px rgba(0, 0, 0, 0.15);
+}
+
+body.employee-layout .attendance-section h2,
+body.employee-layout .history-section h2 {
+    color: #2196f3;
+    font-size: 1.3rem;
+    font-weight: 600;
+    display: flex;
+    align-items: center;
+    gap: 0.6rem;
+    margin-bottom: 1rem;
+    padding-bottom: 0.8rem;
+    border-bottom: 2px solid #e3f2fd;
+}
+
+/* === 従業員画面のボタン（既存のクラス名を使用） === */
+body.employee-layout .attendance-buttons {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 2rem;
+    margin-top: 2rem;
+}
+
+body.employee-layout .button-extra-large {
+    background: linear-gradient(135deg, #4CAF50, #45a049);
+    color: white;
+    border: none;
+    border-radius: 20px;
+    padding: 3rem 2rem;
+    font-size: 2rem;
+    font-weight: 700;
+    cursor: pointer;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 1rem;
+    transition: all 0.3s ease;
+    box-shadow: 0 8px 25px rgba(0, 0, 0, 0.15);
+    min-height: 200px;
+    justify-content: center;
+    text-transform: uppercase;
+    letter-spacing: 2px;
+    width: 100%;
+    position: relative;
+    overflow: hidden;
+}
+
+body.employee-layout .button-extra-large.check-out {
+    background: linear-gradient(135deg, #f39c12, #e67e22);
+}
+
+body.employee-layout .button-extra-large:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 12px 35px rgba(0, 0, 0, 0.2);
+}
+
+body.employee-layout .button-extra-large i {
+    font-size: 3.5rem;
+    margin-bottom: 1rem;
+}
+
+body.employee-layout .button-extra-large .button-text {
+    font-size: 1.6rem;
+    font-weight: 700;
+}
+
+body.employee-layout .button-extra-large .button-time {
+    font-size: 1rem;
+    opacity: 0.8;
+}
+
+/* === 従業員画面のテーブル（既存のクラス名を使用） === */
+body.employee-layout .table-container {
+    background: white;
+    border-radius: 10px;
+    overflow: hidden;
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+    transition: all 0.3s ease;
+}
+
+body.employee-layout .table-container:hover {
+    transform: translateY(-1px);
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.15);
+}
+
+body.employee-layout .records-table {
+    width: 100%;
+    border-collapse: collapse;
+}
+
+body.employee-layout .records-table th {
+    background: #f8f9fa;
+    padding: 0.8rem;
+    text-align: left;
+    font-weight: 600;
+    color: #2c3e50;
+    border-bottom: 1px solid #e9ecef;
+    font-size: 0.85rem;
+}
+
+body.employee-layout .records-table td {
+    padding: 0.8rem;
+    border-bottom: 1px solid #f1f3f4;
+    font-size: 0.85rem;
+}
+
+body.employee-layout .records-table tr:hover {
+    background: #f8f9fa;
+    transform: translateY(-1px);
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+    transition: all 0.3s ease;
+}
+
+body.employee-layout .working-status {
+    color: #f39c12;
+    font-weight: 600;
+}
+
+body.employee-layout .no-data {
+    text-align: center;
+    color: #666;
+    font-style: italic;
+    padding: 2rem;
+}
+
+/* === 従業員画面のレスポンシブ対応 === */
+@media (max-width: 768px) {
+    body.employee-layout .container {
+        margin: 1rem auto;
+        border-radius: 10px;
+    }
+    
+    body.employee-layout .page-header {
+        padding: var(--spacing-md);
+        border-radius: 10px 10px 0 0;
+    }
+    
+    body.employee-layout .header-content {
+        flex-direction: column;
+        gap: var(--spacing-md);
+        align-items: center;
+    }
+    
+    body.employee-layout .header-left {
+        flex-direction: column;
+        gap: 1rem;
+    }
+    
+    body.employee-layout .user-info {
+        flex-direction: column;
+        gap: var(--spacing-md);
+        text-align: center;
+    }
+    
+    body.employee-layout .main-nav {
+        padding: 0 var(--spacing-md);
+        flex-wrap: wrap;
+    }
+    
+    body.employee-layout .page-footer {
+        padding: var(--spacing-lg);
+        border-radius: 0 0 10px 10px;
+    }
+    
+    body.employee-layout .attendance-buttons {
+        grid-template-columns: 1fr;
+        gap: var(--spacing-md);
+    }
+    
+    body.employee-layout .button-extra-large {
+        padding: var(--spacing-lg) var(--spacing-md);
+        min-height: 120px;
+    }
+    
+    /* モバイルではホバーエフェクトを軽減 */
+    body.employee-layout .container:hover,
+    body.employee-layout .button-extra-large:hover,
+    body.employee-layout .records-table tr:hover,
+    body.employee-layout .table-container:hover,
+    body.employee-layout .attendance-section:hover,
+    body.employee-layout .history-section:hover {
+        transform: none;
+        box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
+    }
+    
+    /* タッチデバイス用のアクティブ状態 */
+    body.employee-layout .button-extra-large:active {
+        transform: translateY(1px);
+        box-shadow: 0 2px 8px rgba(0, 0, 0, 0.2);
+    }
+}
+
+@media (max-width: 480px) {
+    body.employee-layout .header-content h1 {
+        font-size: 1.2rem;
+    }
+    
+    body.employee-layout .records-table th,
+    body.employee-layout .records-table td {
+        padding: 0.75rem var(--spacing-sm);
+        font-size: var(--font-size-base);
+    }
+    
+    body.employee-layout .button-extra-large {
+        min-height: 100px;
+    }
+    
+    body.employee-layout .button-extra-large i {
+        font-size: 2rem;
+    }
+    
+    body.employee-layout .button-extra-large .button-text {
+        font-size: var(--font-size-lg);
+    }
+}
 }
