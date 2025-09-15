@@ -1,0 +1,846 @@
+/* === 管理者メニュー専用スタイル === */
+
+/* ヘッダー */
+.page-header {
+    background: linear-gradient(135deg, #ffffff 0%, #f8f9fa 100%);
+    border-bottom: 2px solid #2196f3;
+    box-shadow: 0 2px 8px rgba(33, 150, 243, 0.1);
+    position: sticky;
+    top: 0;
+    z-index: 100;
+    padding: 0.8rem 2rem;
+    border-radius: 15px 15px 0 0;
+}
+
+.header-content {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    max-width: 1400px;
+    margin: 0 auto;
+}
+
+.header-left {
+    display: flex;
+    align-items: center;
+    gap: 1.5rem;
+}
+
+.header-left h1 {
+    color: #2196f3;
+    font-size: 1.5rem;
+    font-weight: 600;
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+}
+
+.user-info {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+}
+
+.user-avatar {
+    width: 50px;
+    height: 50px;
+    background: linear-gradient(135deg, #2196f3, #64b5f6);
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: white;
+    font-size: 1.5rem;
+}
+
+.user-details {
+    display: flex;
+    flex-direction: column;
+    gap: 0.25rem;
+}
+
+.username {
+    font-size: 1.2rem;
+    font-weight: 600;
+    color: #2196f3;
+}
+
+.user-role {
+    font-size: 0.8rem;
+    color: #888;
+    background: #e3f2fd;
+    padding: 0.25rem 0.5rem;
+    border-radius: 12px;
+    border: 1px solid #bbdefb;
+}
+
+.header-right {
+    display: flex;
+    align-items: center;
+    gap: 1.5rem;
+}
+
+.current-time-display {
+    background: #f8f9fa;
+    padding: 0.75rem 1rem;
+    border-radius: 8px;
+    border: 2px solid #e3f2fd;
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    color: #2196f3;
+    font-weight: 500;
+}
+
+.header-actions {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+}
+
+.theme-toggle {
+    background: #f8f9fa;
+    border: 2px solid #e3f2fd;
+    color: #2196f3;
+    padding: 0.75rem;
+    border-radius: 8px;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    font-size: 1.1rem;
+}
+
+.theme-toggle:hover {
+    background: #e3f2fd;
+    border-color: #2196f3;
+    transform: translateY(-2px);
+}
+
+.logout-btn {
+    background: linear-gradient(135deg, #f44336, #e57373);
+    color: white;
+    padding: 0.75rem 1.5rem;
+    border-radius: 8px;
+    text-decoration: none;
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    font-weight: 500;
+    transition: all 0.3s ease;
+    border: none;
+    cursor: pointer;
+}
+
+.logout-btn:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 4px 15px rgba(244, 67, 54, 0.3);
+}
+
+/* メッセージエリア */
+.message-area {
+    padding: 0.5rem 2rem;
+    max-width: 1400px;
+    margin: 0 auto;
+}
+
+.success-message, .error-message {
+    padding: 0.8rem 1.2rem;
+    border-radius: 8px;
+    display: flex;
+    align-items: center;
+    gap: 0.6rem;
+    font-weight: 500;
+    margin-bottom: 0.5rem;
+    font-size: 0.9rem;
+}
+
+.success-message {
+    background-color: #e8f5e8;
+    color: #2e7d32;
+    border: 2px solid #a5d6a7;
+}
+
+.error-message {
+    background-color: #ffebee;
+    color: #c62828;
+    border: 2px solid #ef9a9a;
+}
+
+/* メインコンテンツエリア（2カラムレイアウト） */
+.main-content {
+    display: grid;
+    grid-template-columns: 1fr 350px;
+    gap: 1.5rem;
+    max-width: 1400px;
+    margin: 0 auto;
+    padding: 0 2rem 1rem 2rem;
+}
+
+.main-left {
+    display: flex;
+    flex-direction: column;
+    gap: 1.5rem;
+}
+
+.main-right {
+    display: flex;
+    flex-direction: column;
+    gap: 1.5rem;
+}
+
+/* セクション共通スタイル */
+.section-header {
+    margin-bottom: 1rem;
+    padding-bottom: 0.8rem;
+    border-bottom: 2px solid #e3f2fd;
+}
+
+.section-header h2 {
+    color: #2196f3;
+    font-size: 1.3rem;
+    font-weight: 600;
+    display: flex;
+    align-items: center;
+    gap: 0.6rem;
+    margin-bottom: 0.3rem;
+}
+
+.section-description {
+    color: #666;
+    font-size: 0.95rem;
+    line-height: 1.5;
+}
+
+/* 勤怠打刻セクション */
+.clock-in-section {
+    background: #ffffff;
+    padding: 1.5rem;
+    border-radius: 12px;
+    border: 2px solid #e3f2fd;
+    box-shadow: 0 4px 20px rgba(33, 150, 243, 0.08);
+}
+
+.clock-buttons {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 1.5rem;
+    margin-bottom: 1.5rem;
+}
+
+.clock-button-container {
+    display: flex;
+    justify-content: center;
+}
+
+.clock-button {
+    position: relative;
+    width: 100%;
+    max-width: 200px;
+    height: 120px;
+    background: linear-gradient(135deg, #ffffff 0%, #f8f9fa 100%);
+    border: 3px solid #2196f3;
+    border-radius: 16px;
+    color: #2196f3;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    overflow: hidden;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 0.5rem;
+    font-weight: 600;
+    text-decoration: none;
+}
+
+.clock-button:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 8px 25px rgba(33, 150, 243, 0.2);
+    border-color: #1976d2;
+}
+
+.clock-button.check-in:hover {
+    background: linear-gradient(135deg, #e8f5e8 0%, #c8e6c9 100%);
+    border-color: #4caf50;
+    color: #2e7d32;
+}
+
+.clock-button.check-out:hover {
+    background: linear-gradient(135deg, #fff3e0 0%, #ffcc02 100%);
+    border-color: #ff9800;
+    color: #e65100;
+}
+
+.button-icon {
+    font-size: 2rem;
+    margin-bottom: 0.5rem;
+}
+
+.button-text {
+    font-size: 1.2rem;
+    font-weight: 700;
+}
+
+.button-subtext {
+    font-size: 0.8rem;
+    opacity: 0.8;
+    font-weight: 400;
+}
+
+.button-ripple {
+    position: absolute;
+    border-radius: 50%;
+    background: rgba(33, 150, 243, 0.3);
+    transform: scale(0);
+    animation: ripple 0.6s linear;
+    pointer-events: none;
+}
+
+@keyframes ripple {
+    to {
+        transform: scale(4);
+        opacity: 0;
+    }
+}
+
+.clock-info {
+    margin-top: 1.5rem;
+}
+
+.info-card {
+    background: #f8f9fa;
+    border: 2px solid #e3f2fd;
+    border-radius: 8px;
+    padding: 1.5rem;
+    display: flex;
+    align-items: flex-start;
+    gap: 1rem;
+}
+
+.info-card i {
+    color: #2196f3;
+    font-size: 1.5rem;
+    margin-top: 0.25rem;
+}
+
+.info-content h4 {
+    color: #2196f3;
+    margin-bottom: 0.5rem;
+    font-size: 1.1rem;
+}
+
+.info-content p {
+    color: #666;
+    line-height: 1.6;
+}
+
+/* 今日の勤怠状況セクション */
+.today-status-section {
+    background: #ffffff;
+    padding: 1.5rem;
+    border-radius: 12px;
+    border: 2px solid #e3f2fd;
+    box-shadow: 0 4px 20px rgba(33, 150, 243, 0.08);
+}
+
+.status-cards {
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+}
+
+.status-card {
+    background: #f8f9fa;
+    border: 2px solid #e3f2fd;
+    border-radius: 8px;
+    padding: 1rem;
+    transition: all 0.3s ease;
+}
+
+.status-card:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 4px 15px rgba(33, 150, 243, 0.15);
+    border-color: #2196f3;
+}
+
+.status-card.checkin-card {
+    border-color: #4caf50;
+}
+
+.status-card.checkout-card {
+    border-color: #ff9800;
+}
+
+.status-card.workhours-card {
+    border-color: #9c27b0;
+}
+
+.card-header {
+    color: #2196f3;
+    font-weight: 600;
+    margin-bottom: 0.75rem;
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    font-size: 0.95rem;
+}
+
+.checkin-card .card-header {
+    color: #4caf50;
+}
+
+.checkout-card .card-header {
+    color: #ff9800;
+}
+
+.workhours-card .card-header {
+    color: #9c27b0;
+}
+
+.card-value {
+    font-size: 1.1rem;
+    font-weight: 600;
+}
+
+.time-display {
+    display: flex;
+    flex-direction: column;
+    gap: 0.25rem;
+}
+
+.time-value {
+    font-size: 1.3rem;
+    color: #2196f3;
+    font-weight: 700;
+}
+
+.date-display {
+    font-size: 0.9rem;
+    color: #666;
+    font-weight: 400;
+}
+
+.no-record {
+    color: #888;
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    font-style: italic;
+}
+
+.working-status {
+    color: #ff9800;
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    font-weight: 500;
+}
+
+.work-hours {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    color: #9c27b0;
+}
+
+.hours, .minutes {
+    background: #f3e5f5;
+    padding: 0.25rem 0.5rem;
+    border-radius: 4px;
+    border: 1px solid #ce93d8;
+    font-size: 0.9rem;
+}
+
+.error-status {
+    color: #f44336;
+    font-style: italic;
+}
+
+/* クイックアクションセクション */
+.quick-actions-section {
+    background: #ffffff;
+    padding: 1.5rem;
+    border-radius: 12px;
+    border: 2px solid #e3f2fd;
+    box-shadow: 0 4px 20px rgba(33, 150, 243, 0.08);
+}
+
+.quick-actions {
+    display: flex;
+    flex-direction: column;
+    gap: 0.75rem;
+}
+
+.quick-action-btn {
+    background: #f8f9fa;
+    border: 2px solid #e3f2fd;
+    color: #2196f3;
+    padding: 0.75rem 1rem;
+    border-radius: 8px;
+    text-decoration: none;
+    display: flex;
+    align-items: center;
+    gap: 0.75rem;
+    font-weight: 500;
+    transition: all 0.3s ease;
+    text-align: left;
+}
+
+.quick-action-btn:hover {
+    background: #e3f2fd;
+    border-color: #2196f3;
+    transform: translateX(5px);
+}
+
+/* 勤怠履歴セクション */
+.history-section {
+    background: #ffffff;
+    padding: 2rem;
+    border-radius: 12px;
+    border: 2px solid #e3f2fd;
+    box-shadow: 0 4px 20px rgba(33, 150, 243, 0.08);
+}
+
+.table-container {
+    background: #ffffff;
+    border-radius: 8px;
+    overflow: hidden;
+}
+
+.table-header {
+    background: #f8f9fa;
+    padding: 1rem 1.5rem;
+    border-bottom: 2px solid #e3f2fd;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.table-title {
+    color: #2196f3;
+    font-weight: 600;
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    font-size: 1.1rem;
+}
+
+.refresh-btn {
+    background: #2196f3;
+    color: white;
+    border: none;
+    padding: 0.5rem 1rem;
+    border-radius: 6px;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+}
+
+.refresh-btn:hover {
+    background: #1976d2;
+    transform: rotate(180deg);
+}
+
+.attendance-table {
+    width: 100%;
+    border-collapse: collapse;
+}
+
+.attendance-table th {
+    background: #f8f9fa;
+    color: #2196f3;
+    padding: 1rem;
+    text-align: left;
+    font-weight: 600;
+    border-bottom: 2px solid #e3f2fd;
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+}
+
+.attendance-table td {
+    padding: 1rem;
+    border-bottom: 1px solid #f0f0f0;
+    vertical-align: middle;
+}
+
+.attendance-row:hover {
+    background: #f8f9fa;
+}
+
+.attendance-row.recent-record {
+    background: #e3f2fd;
+    border-left: 4px solid #2196f3;
+}
+
+.date-cell, .time-cell, .workhours-cell, .status-cell {
+    display: flex;
+    align-items: center;
+}
+
+.date-info {
+    display: flex;
+    flex-direction: column;
+    gap: 0.25rem;
+}
+
+.date-main {
+    font-weight: 600;
+    color: #333;
+}
+
+.day-of-week {
+    font-size: 0.8rem;
+    color: #666;
+    background: #f0f0f0;
+    padding: 0.2rem 0.5rem;
+    border-radius: 4px;
+}
+
+.status-badge {
+    padding: 0.5rem 0.75rem;
+    border-radius: 20px;
+    font-size: 0.85rem;
+    font-weight: 500;
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    border: 1px solid;
+}
+
+.status-badge.completed {
+    background-color: #e8f5e8;
+    color: #2e7d32;
+    border-color: #a5d6a7;
+}
+
+.status-badge.working {
+    background-color: #fff3e0;
+    color: #f57c00;
+    border-color: #ffcc02;
+}
+
+.status-badge.incomplete {
+    background-color: #ffebee;
+    color: #c62828;
+    border-color: #ef9a9a;
+}
+
+/* 空の状態とエラー状態 */
+.empty-state, .error-state {
+    text-align: center;
+    padding: 3rem 2rem;
+    color: #666;
+}
+
+.empty-icon, .error-icon {
+    font-size: 3rem;
+    margin-bottom: 1rem;
+    opacity: 0.5;
+}
+
+.empty-text, .error-text {
+    font-size: 1.2rem;
+    font-weight: 600;
+    margin-bottom: 0.5rem;
+}
+
+.empty-subtext, .error-details {
+    font-size: 0.95rem;
+    margin-bottom: 1.5rem;
+    opacity: 0.8;
+}
+
+.start-btn {
+    background: linear-gradient(135deg, #2196f3, #64b5f6);
+    color: white;
+    border: none;
+    padding: 1rem 2rem;
+    border-radius: 8px;
+    font-size: 1rem;
+    font-weight: 600;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    display: inline-flex;
+    align-items: center;
+    gap: 0.75rem;
+}
+
+.start-btn:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 6px 20px rgba(33, 150, 243, 0.3);
+}
+
+/* フッター */
+.page-footer {
+    background: #f8f9fa;
+    border-top: 2px solid #e3f2fd;
+    padding: 2rem;
+    margin-top: 3rem;
+    border-radius: 0 0 15px 15px;
+}
+
+.footer-content {
+    max-width: 1400px;
+    margin: 0 auto;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.footer-info p {
+    color: #666;
+    font-size: 0.9rem;
+}
+
+.footer-links {
+    display: flex;
+    gap: 2rem;
+}
+
+.footer-link {
+    color: #2196f3;
+    text-decoration: none;
+    font-size: 0.9rem;
+    transition: color 0.3s ease;
+}
+
+.footer-link:hover {
+    color: #1976d2;
+    text-decoration: underline;
+}
+
+/* アニメーション */
+.animate {
+    animation: fadeInUp 0.6s ease forwards;
+}
+
+@keyframes fadeInUp {
+    from {
+        opacity: 0;
+        transform: translateY(30px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+/* レスポンシブ対応 */
+@media (max-width: 1200px) {
+    .main-content {
+        grid-template-columns: 1fr;
+        gap: 1.5rem;
+    }
+    
+    .main-right {
+        order: -1;
+    }
+    
+    .status-cards {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+        gap: 1rem;
+    }
+}
+
+@media (max-width: 768px) {
+    .container {
+        padding: 0;
+    }
+    
+    .page-header {
+        padding: 1rem;
+    }
+    
+    .header-content {
+        flex-direction: column;
+        gap: var(--spacing-md);
+        text-align: center;
+    }
+    
+    .main-nav {
+        padding: 0 var(--spacing-md);
+        flex-wrap: wrap;
+    }
+    
+    main {
+        padding: var(--spacing-md);
+    }
+    
+    section {
+        padding: var(--spacing-md);
+    }
+    
+    .form-row,
+    .form-grid {
+        grid-template-columns: 1fr;
+    }
+    
+    .user-form-row {
+        grid-template-columns: 1fr;
+    }
+    
+    .user-form-row .form-group {
+        height: auto;
+    }
+    
+    .user-form-row .form-group input,
+    .user-form-row .form-group select {
+        margin-top: 0;
+    }
+    
+    .user-form-row .checkbox-form-group {
+        justify-content: flex-start;
+    }
+    
+    .button-group {
+        flex-direction: column;
+    }
+    
+    .table-container {
+        font-size: var(--font-size-sm);
+    }
+    
+    .action-buttons {
+        flex-direction: column;
+        gap: var(--spacing-xs);
+    }
+    
+    .chart-container {
+        grid-template-columns: 1fr;
+    }
+    
+    .user-stats {
+        grid-template-columns: 1fr;
+    }
+    
+    .main-content {
+        padding: 0 1rem;
+    }
+    
+    .clock-buttons {
+        grid-template-columns: 1fr;
+        gap: 1rem;
+    }
+    
+    .clock-button {
+        max-width: 100%;
+    }
+    
+    .attendance-table {
+        font-size: 0.9rem;
+    }
+    
+    .attendance-table th,
+    .attendance-table td {
+        padding: 0.75rem 0.5rem;
+    }
+    
+    .footer-content {
+        flex-direction: column;
+        gap: 1rem;
+        text-align: center;
+    }
+}

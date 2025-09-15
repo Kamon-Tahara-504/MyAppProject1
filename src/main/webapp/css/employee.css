@@ -1,0 +1,435 @@
+/* === 従業員メニュー専用スタイル === */
+
+/* 従業員画面用のbodyクラス */
+body.employee-layout {
+    margin: 0;
+    padding: 0;
+    background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+    min-height: 100vh;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    background-attachment: fixed;
+}
+
+html.employee-layout {
+    background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+    min-height: 100%;
+}
+
+/* 従業員画面のコンテナ（既存の.containerクラスをオーバーライド） */
+body.employee-layout .container {
+    min-height: calc(100vh - 4rem);
+    display: flex;
+    flex-direction: column;
+    margin: 2rem auto;
+    max-width: 1200px;
+    background: rgba(255, 255, 255, 0.95);
+    -webkit-backdrop-filter: blur(10px);
+    backdrop-filter: blur(10px);
+    border-radius: 15px;
+    box-shadow: 0 8px 32px rgba(0, 0, 0, 0.1);
+    overflow: hidden;
+    transition: all 0.3s ease;
+}
+
+body.employee-layout .container:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 12px 40px rgba(0, 0, 0, 0.15);
+}
+
+/* === 従業員ヘッダー（管理者メニューと同じデザイン） === */
+body.employee-layout .page-header {
+    background: linear-gradient(135deg, #ffffff 0%, #f8f9fa 100%);
+    border-bottom: 2px solid #2196f3;
+    box-shadow: 0 2px 8px rgba(33, 150, 243, 0.1);
+    position: sticky;
+    top: 0;
+    z-index: 100;
+    padding: 0.8rem 2rem;
+    border-radius: 15px 15px 0 0;
+}
+
+body.employee-layout .header-content {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    max-width: 1400px;
+    margin: 0 auto;
+}
+
+body.employee-layout .header-left {
+    display: flex;
+    align-items: center;
+    gap: 1.5rem;
+}
+
+body.employee-layout .header-left h1 {
+    color: #2196f3;
+    font-size: 1.5rem;
+    font-weight: 600;
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+}
+
+body.employee-layout .user-info {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+}
+
+body.employee-layout .user-avatar {
+    width: 50px;
+    height: 50px;
+    background: linear-gradient(135deg, #2196f3, #64b5f6);
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: white;
+    font-size: 1.5rem;
+}
+
+body.employee-layout .user-details {
+    display: flex;
+    flex-direction: column;
+    gap: 0.25rem;
+}
+
+body.employee-layout .username {
+    font-size: 1.2rem;
+    font-weight: 600;
+    color: #2196f3;
+    margin: 0;
+    line-height: 1.2;
+}
+
+body.employee-layout .user-role {
+    font-size: 0.8rem;
+    color: #888;
+    background: #e3f2fd;
+    padding: 0.25rem 0.5rem;
+    border-radius: 12px;
+    border: 1px solid #bbdefb;
+    margin: 0;
+    line-height: 1.2;
+}
+
+/* === 従業員ナビゲーションメニュー（管理者メニューと同じデザイン） === */
+body.employee-layout .main-nav {
+    background: #000000;
+    padding: 0 2rem;
+    display: flex;
+    gap: 0.5rem;
+}
+
+body.employee-layout .nav-link {
+    color: #ffffff;
+    text-decoration: none;
+    padding: 1rem 1.5rem;
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    transition: all 0.3s ease;
+    position: relative;
+    overflow: hidden;
+}
+
+body.employee-layout .nav-link:hover,
+body.employee-layout .nav-link.active {
+    background: #ffffff;
+    color: #000000;
+    transform: translateY(-2px);
+    box-shadow: 0 4px 15px rgba(255, 255, 255, 0.3);
+}
+
+body.employee-layout .nav-link.logout {
+    margin-left: auto;
+    color: #ffffff;
+}
+
+body.employee-layout .nav-link.logout:hover {
+    background: #ffffff;
+    color: #000000;
+    transform: translateY(-2px);
+    box-shadow: 0 4px 15px rgba(255, 255, 255, 0.3);
+}
+
+/* === 従業員メッセージエリア（管理者メニューと同じデザイン） === */
+body.employee-layout .message-area {
+    padding: 0.5rem 2rem;
+    max-width: 1400px;
+    margin: 0 auto;
+}
+
+body.employee-layout .success-message, 
+body.employee-layout .error-message {
+    padding: 0.8rem 1.2rem;
+    border-radius: 8px;
+    display: flex;
+    align-items: center;
+    gap: 0.6rem;
+    font-weight: 500;
+    margin-bottom: 0.5rem;
+    font-size: 0.9rem;
+}
+
+body.employee-layout .success-message {
+    background-color: #e8f5e8;
+    color: #2e7d32;
+    border: 2px solid #a5d6a7;
+}
+
+body.employee-layout .error-message {
+    background-color: #ffebee;
+    color: #c62828;
+    border: 2px solid #ef9a9a;
+}
+
+/* === 従業員フッター（管理者メニューと同じデザイン） === */
+body.employee-layout .page-footer {
+    background: #f8f9fa;
+    border-top: 2px solid #e3f2fd;
+    padding: 2rem;
+    margin-top: 3rem;
+    border-radius: 0 0 15px 15px;
+}
+
+body.employee-layout .page-footer p {
+    color: #666;
+    font-size: 0.9rem;
+    text-align: center;
+    margin: 0;
+}
+
+/* === 従業員画面のセクション（既存のクラス名を使用） === */
+body.employee-layout .attendance-section,
+body.employee-layout .history-section {
+    background: rgba(255, 255, 255, 0.8);
+    -webkit-backdrop-filter: blur(5px);
+    backdrop-filter: blur(5px);
+    border-radius: 15px;
+    padding: 1.2rem;
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
+    transition: all 0.3s ease;
+    margin-bottom: 2rem;
+}
+
+body.employee-layout .attendance-section:hover,
+body.employee-layout .history-section:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 8px 25px rgba(0, 0, 0, 0.15);
+}
+
+body.employee-layout .attendance-section h2,
+body.employee-layout .history-section h2 {
+    color: #2196f3;
+    font-size: 1.3rem;
+    font-weight: 600;
+    display: flex;
+    align-items: center;
+    gap: 0.6rem;
+    margin-bottom: 1rem;
+    padding-bottom: 0.8rem;
+    border-bottom: 2px solid #e3f2fd;
+}
+
+/* === 従業員画面のボタン（既存のクラス名を使用） === */
+body.employee-layout .attendance-buttons {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 2rem;
+    margin-top: 2rem;
+}
+
+body.employee-layout .button-extra-large {
+    background: linear-gradient(135deg, #4CAF50, #45a049);
+    color: white;
+    border: none;
+    border-radius: 20px;
+    padding: 3rem 2rem;
+    font-size: 2rem;
+    font-weight: 700;
+    cursor: pointer;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 1rem;
+    transition: all 0.3s ease;
+    box-shadow: 0 8px 25px rgba(0, 0, 0, 0.15);
+    min-height: 200px;
+    justify-content: center;
+    text-transform: uppercase;
+    letter-spacing: 2px;
+    width: 100%;
+    position: relative;
+    overflow: hidden;
+}
+
+body.employee-layout .button-extra-large.check-out {
+    background: linear-gradient(135deg, #f39c12, #e67e22);
+}
+
+body.employee-layout .button-extra-large:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 12px 35px rgba(0, 0, 0, 0.2);
+}
+
+body.employee-layout .button-extra-large i {
+    font-size: 3.5rem;
+    margin-bottom: 1rem;
+}
+
+body.employee-layout .button-extra-large .button-text {
+    font-size: 1.6rem;
+    font-weight: 700;
+}
+
+body.employee-layout .button-extra-large .button-time {
+    font-size: 1rem;
+    opacity: 0.8;
+}
+
+/* === 従業員画面のテーブル（既存のクラス名を使用） === */
+body.employee-layout .table-container {
+    background: white;
+    border-radius: 10px;
+    overflow: hidden;
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+    transition: all 0.3s ease;
+}
+
+body.employee-layout .table-container:hover {
+    transform: translateY(-1px);
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.15);
+}
+
+body.employee-layout .records-table {
+    width: 100%;
+    border-collapse: collapse;
+}
+
+body.employee-layout .records-table th {
+    background: #f8f9fa;
+    padding: 0.8rem;
+    text-align: left;
+    font-weight: 600;
+    color: #2c3e50;
+    border-bottom: 1px solid #e9ecef;
+    font-size: 0.85rem;
+}
+
+body.employee-layout .records-table td {
+    padding: 0.8rem;
+    border-bottom: 1px solid #f1f3f4;
+    font-size: 0.85rem;
+}
+
+body.employee-layout .records-table tr:hover {
+    background: #f8f9fa;
+    transform: translateY(-1px);
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+    transition: all 0.3s ease;
+}
+
+body.employee-layout .working-status {
+    color: #f39c12;
+    font-weight: 600;
+}
+
+body.employee-layout .no-data {
+    text-align: center;
+    color: #666;
+    font-style: italic;
+    padding: 2rem;
+}
+
+/* === 従業員画面のレスポンシブ対応 === */
+@media (max-width: 768px) {
+    body.employee-layout .container {
+        margin: 1rem auto;
+        border-radius: 10px;
+    }
+    
+    body.employee-layout .page-header {
+        padding: var(--spacing-md);
+        border-radius: 10px 10px 0 0;
+    }
+    
+    body.employee-layout .header-content {
+        flex-direction: column;
+        gap: var(--spacing-md);
+        align-items: center;
+    }
+    
+    body.employee-layout .header-left {
+        flex-direction: column;
+        gap: 1rem;
+    }
+    
+    body.employee-layout .user-info {
+        flex-direction: column;
+        gap: var(--spacing-md);
+        text-align: center;
+    }
+    
+    body.employee-layout .main-nav {
+        padding: 0 var(--spacing-md);
+        flex-wrap: wrap;
+    }
+    
+    body.employee-layout .page-footer {
+        padding: var(--spacing-lg);
+        border-radius: 0 0 10px 10px;
+    }
+    
+    body.employee-layout .attendance-buttons {
+        grid-template-columns: 1fr;
+        gap: var(--spacing-md);
+    }
+    
+    body.employee-layout .button-extra-large {
+        padding: var(--spacing-lg) var(--spacing-md);
+        min-height: 120px;
+    }
+    
+    /* モバイルではホバーエフェクトを軽減 */
+    body.employee-layout .container:hover,
+    body.employee-layout .button-extra-large:hover,
+    body.employee-layout .records-table tr:hover,
+    body.employee-layout .table-container:hover,
+    body.employee-layout .attendance-section:hover,
+    body.employee-layout .history-section:hover {
+        transform: none;
+        box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
+    }
+    
+    /* タッチデバイス用のアクティブ状態 */
+    body.employee-layout .button-extra-large:active {
+        transform: translateY(1px);
+        box-shadow: 0 2px 8px rgba(0, 0, 0, 0.2);
+    }
+}
+
+@media (max-width: 480px) {
+    body.employee-layout .header-content h1 {
+        font-size: 1.2rem;
+    }
+    
+    body.employee-layout .records-table th,
+    body.employee-layout .records-table td {
+        padding: 0.75rem var(--spacing-sm);
+        font-size: var(--font-size-base);
+    }
+    
+    body.employee-layout .button-extra-large {
+        min-height: 100px;
+    }
+    
+    body.employee-layout .button-extra-large i {
+        font-size: 2rem;
+    }
+    
+    body.employee-layout .button-extra-large .button-text {
+        font-size: var(--font-size-lg);
+    }
+}

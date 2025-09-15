@@ -1,0 +1,949 @@
+:root {
+    /* カラーパレット */
+    --primary-color: #667eea;
+    --primary-hover: #5a67d8;
+    --primary-light: rgba(102, 126, 234, 0.1);
+    
+    --secondary-color: #6c757d;
+    --secondary-hover: #5a6268;
+    
+    --success-color: #27ae60;
+    --success-hover: #229954;
+    --success-bg: #d4edda;
+    --success-text: #155724;
+    
+    --warning-color: #f39c12;
+    --warning-hover: #e67e22;
+    --warning-bg: #fff3cd;
+    --warning-text: #856404;
+    
+    --danger-color: #e74c3c;
+    --danger-hover: #c0392b;
+    --danger-bg: #f8d7da;
+    --danger-text: #721c24;
+    
+    --info-color: #1565c0;
+    --info-bg: #e3f2fd;
+    --info-light: #bbdefb;
+    
+    /* グレースケール */
+    --text-primary: #2c3e50;
+    --text-secondary: #34495e;
+    --text-muted: #6c757d;
+    --text-light: #bdc3c7;
+    
+    /* 背景色 */
+    --bg-primary: #ffffff;
+    --bg-secondary: #f8f9fa;
+    --bg-tertiary: #e9ecef;
+    --bg-dark: #2c3e50;
+    --bg-dark-secondary: #34495e;
+    
+    /* グラデーション */
+    --gradient-primary: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+    
+    /* ボーダー */
+    --border-color: #e9ecef;
+    --border-color-dark: #ced4da;
+    --border-radius: 4px;
+    --border-radius-lg: 8px;
+    --border-radius-xl: 12px;
+    
+    /* シャドウ */
+    --shadow-sm: 0 2px 4px rgba(0,0,0,0.05);
+    --shadow-md: 0 4px 6px rgba(0,0,0,0.1);
+    --shadow-lg: 0 10px 30px rgba(0,0,0,0.15);
+    
+    /* スペーシング */
+    --spacing-xs: 0.25rem;
+    --spacing-sm: 0.5rem;
+    --spacing-md: 1rem;
+    --spacing-lg: 1.5rem;
+    --spacing-xl: 2rem;
+    --spacing-xxl: 2.5rem;
+    
+    /* フォントサイズ */
+    --font-size-xs: 0.7rem;
+    --font-size-sm: 0.8rem;
+    --font-size-base: 0.9rem;
+    --font-size-lg: 1rem;
+    --font-size-xl: 1.1rem;
+    --font-size-xxl: 1.3rem;
+    --font-size-display: 2.5rem;
+    
+    /* トランジション */
+    --transition-fast: 0.2s ease;
+}
+
+/* === リセット & ベース設定 === */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+html {
+    font-size: 16px;
+    scroll-behavior: smooth;
+    background: var(--gradient-primary);
+    min-height: 100%;
+}
+
+body {
+    font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Helvetica Neue', Arial, sans-serif;
+    line-height: 1.6;
+    color: var(--text-primary);
+    background: var(--gradient-primary);
+    min-height: 100vh;
+    margin: 0;
+    padding: 0;
+    background-attachment: fixed;
+}
+
+/* === 共通レイアウト === */
+.container {
+    max-width: 1200px;
+    margin: 2rem auto;
+    padding: 0;
+    background: rgba(255, 255, 255, 0.95);
+    -webkit-backdrop-filter: blur(10px);
+    backdrop-filter: blur(10px);
+    min-height: calc(100vh - 4rem);
+    border-radius: 15px;
+    box-shadow: 0 8px 32px rgba(0, 0, 0, 0.1);
+    overflow: hidden;
+    transition: all 0.3s ease;
+}
+
+.container:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 12px 40px rgba(0, 0, 0, 0.15);
+}
+
+/* === ヘッダー === */
+.page-header {
+    background: #ffffff;
+    color: #000000;
+    padding: var(--spacing-md) var(--spacing-xl);
+    border-bottom: 2px solid #000000;
+}
+
+.header-content {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.header-left h1 {
+    font-size: var(--font-size-lg);
+    font-weight: 600;
+}
+
+.user-info {
+    display: flex;
+    align-items: center;
+    gap: var(--spacing-md);
+}
+
+.user-avatar {
+    width: 40px;
+    height: 40px;
+    background: var(--bg-dark-secondary);
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.user-details .username {
+    font-size: var(--font-size-lg);
+    margin: 0;
+}
+
+.user-details .user-role {
+    font-size: 0.85rem;
+    color: var(--text-light);
+}
+
+/* === ナビゲーション === */
+.main-nav {
+    background: #000000;
+    padding: 0 var(--spacing-xl);
+    display: flex;
+    gap: var(--spacing-sm);
+}
+
+.nav-link {
+    color: #ffffff;
+    text-decoration: none;
+    padding: var(--spacing-md) var(--spacing-lg);
+    display: flex;
+    align-items: center;
+    gap: var(--spacing-sm);
+    transition: all 0.3s ease;
+    position: relative;
+    overflow: hidden;
+}
+
+.nav-link:hover,
+.nav-link.active {
+    background: #ffffff;
+    color: #000000;
+    transform: translateY(-2px);
+    box-shadow: 0 4px 15px rgba(255, 255, 255, 0.3);
+}
+
+.nav-link.logout {
+    margin-left: auto;
+    color: #ffffff;
+}
+
+.nav-link.logout:hover {
+    background: #ffffff;
+    color: #000000;
+    transform: translateY(-2px);
+    box-shadow: 0 4px 15px rgba(255, 255, 255, 0.3);
+}
+
+/* === メインコンテンツ === */
+main {
+    padding: var(--spacing-xl);
+}
+
+section {
+    background: rgba(255, 255, 255, 0.8);
+    -webkit-backdrop-filter: blur(5px);
+    backdrop-filter: blur(5px);
+    border-radius: var(--border-radius-lg);
+    padding: var(--spacing-lg);
+    margin-bottom: var(--spacing-xl);
+    box-shadow: var(--shadow-sm);
+    transition: all 0.3s ease;
+}
+
+section:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 8px 25px rgba(0, 0, 0, 0.1);
+}
+
+section h2 {
+    color: var(--text-primary);
+    font-size: var(--font-size-xxl);
+    margin-bottom: var(--spacing-md);
+}
+
+section h3 {
+    color: var(--text-primary);
+    font-size: var(--font-size-xl);
+    margin-bottom: 0.75rem;
+}
+
+/* === フォーム === */
+.filter-form,
+.manual-form {
+    background: rgba(248, 249, 250, 0.8);
+    -webkit-backdrop-filter: blur(5px);
+    backdrop-filter: blur(5px);
+    padding: var(--spacing-lg);
+    border-radius: 6px;
+    border: 1px solid var(--border-color);
+    transition: all 0.3s ease;
+}
+
+.filter-form:hover,
+.manual-form:hover {
+    transform: translateY(-1px);
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+    border-color: var(--primary-color);
+}
+
+.form-row {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+    gap: var(--spacing-md);
+    align-items: flex-start;
+}
+
+.form-row .form-group {
+    display: flex;
+    flex-direction: column;
+    min-height: 80px;
+}
+
+.form-row .form-group input,
+.form-row .form-group select,
+.form-row .form-group button {
+    margin-bottom: 0.25rem;
+}
+
+.form-row .form-group small {
+    min-height: 20px;
+    line-height: 1.3;
+    margin-top: 0.25rem;
+}
+
+.form-row .form-group:not(:has(small)) {
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-end;
+}
+
+.form-row .form-group button:only-child {
+    margin-top: auto;
+}
+
+.form-row .form-group input,
+.form-row .form-group select {
+    padding: 0.7rem;
+    border: 1px solid var(--border-color-dark);
+    border-radius: var(--border-radius);
+    font-size: var(--font-size-base);
+    transition: border-color var(--transition-fast);
+}
+
+.form-row .form-group button {
+    margin-top: auto;
+}
+
+.user-form-row {
+    grid-template-columns: repeat(4, 1fr);
+    align-items: start;
+}
+
+.user-form-row .form-group {
+    display: flex;
+    flex-direction: column;
+    min-height: 100px;
+}
+
+.user-form-row .form-group input,
+.user-form-row .form-group select,
+.user-form-row .input-with-tooltip {
+    margin-top: auto;
+}
+
+.user-form-row .form-group small {
+    margin-top: var(--spacing-xs);
+    margin-bottom: 20px;
+}
+
+.user-form-row .checkbox-form-group {
+    min-height: 100px;
+    justify-content: space-between;
+}
+
+.user-form-row .checkbox-form-group .checkbox-group {
+    margin-top: auto;
+}
+
+.user-form-row .checkbox-form-group small {
+    margin-bottom: 20px;
+}
+
+.form-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    gap: var(--spacing-md);
+    align-items: end;
+}
+
+.form-group {
+    display: flex;
+    flex-direction: column;
+}
+
+.form-group label {
+    font-weight: 500;
+    color: var(--text-primary);
+    margin-bottom: var(--spacing-sm);
+    font-size: var(--font-size-base);
+}
+
+.form-group input,
+.form-group select {
+    padding: 0.7rem;
+    border: 1px solid var(--border-color-dark);
+    border-radius: var(--border-radius);
+    font-size: var(--font-size-base);
+    transition: all 0.3s ease;
+}
+
+.form-group input:focus,
+.form-group select:focus {
+    outline: none;
+    border-color: var(--primary-color);
+    box-shadow: 0 0 0 3px var(--primary-light);
+    transform: translateY(-1px);
+}
+
+.form-group input:hover,
+.form-group select:hover {
+    border-color: var(--primary-color);
+    box-shadow: 0 2px 8px rgba(102, 126, 234, 0.1);
+}
+
+.form-group small {
+    font-size: var(--font-size-sm);
+    color: var(--text-muted);
+    margin-top: var(--spacing-xs);
+}
+
+.checkbox-group {
+    display: flex;
+    align-items: flex-start;
+    gap: var(--spacing-sm);
+    min-height: 40px;
+}
+
+.checkbox-label {
+    display: flex;
+    flex-direction: column;
+    cursor: pointer;
+    flex: 1;
+}
+
+.checkbox-text {
+    font-weight: 500;
+    margin-bottom: var(--spacing-xs);
+}
+
+.checkbox-form-group {
+    min-height: 80px;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-end;
+}
+
+.checkbox-form-group .checkbox-group {
+    margin-top: auto;
+}
+
+.checkbox-form-group input[type="checkbox"] {
+    margin-top: 0.5rem;
+}
+
+/* === ツールチップ === */
+.input-with-tooltip {
+    position: relative;
+    display: flex;
+    align-items: center;
+    gap: var(--spacing-sm);
+}
+
+.input-with-tooltip input {
+    flex: 1;
+}
+
+.tooltip {
+    position: relative;
+    display: inline-flex;
+    cursor: help;
+}
+
+.tooltip i {
+    color: var(--primary-color);
+    font-size: 1.1rem;
+}
+
+.tooltip-text {
+    visibility: hidden;
+    opacity: 0;
+    position: absolute;
+    top: -10px;
+    left: 25px;
+    background: var(--bg-dark);
+    color: var(--bg-primary);
+    text-align: left;
+    padding: var(--spacing-sm) var(--spacing-md);
+    border-radius: var(--border-radius);
+    font-size: var(--font-size-sm);
+    white-space: nowrap;
+    z-index: 1000;
+    box-shadow: var(--shadow-md);
+    transition: opacity var(--transition-fast), visibility var(--transition-fast);
+    min-width: 300px;
+    white-space: normal;
+    line-height: 1.4;
+}
+
+.tooltip-text::before {
+    content: '';
+    position: absolute;
+    top: 10px;
+    left: -5px;
+    border: 5px solid transparent;
+    border-right-color: var(--bg-dark);
+}
+
+.tooltip:hover .tooltip-text {
+    visibility: visible;
+    opacity: 1;
+}
+
+/* === ボタン === */
+.button {
+    padding: 0.7rem var(--spacing-lg);
+    border: none;
+    border-radius: var(--border-radius);
+    font-size: var(--font-size-base);
+    font-weight: 500;
+    cursor: pointer;
+    text-decoration: none;
+    display: inline-flex;
+    align-items: center;
+    gap: var(--spacing-sm);
+    transition: all 0.3s ease;
+    text-align: center;
+    justify-content: center;
+    position: relative;
+    overflow: hidden;
+}
+
+.button.primary {
+    background: var(--primary-color);
+    color: var(--bg-primary);
+}
+
+.button.primary:hover {
+    background: var(--primary-hover);
+    transform: translateY(-2px);
+    box-shadow: 0 4px 15px rgba(102, 126, 234, 0.3);
+}
+
+.button.secondary {
+    background: var(--secondary-color);
+    color: var(--bg-primary);
+}
+
+.button.secondary:hover {
+    background: var(--secondary-hover);
+    transform: translateY(-2px);
+    box-shadow: 0 4px 15px rgba(108, 117, 125, 0.3);
+}
+
+.button.warning {
+    background: var(--warning-color);
+    color: var(--bg-primary);
+}
+
+.button.warning:hover {
+    background: var(--warning-hover);
+    transform: translateY(-2px);
+    box-shadow: 0 4px 15px rgba(243, 156, 18, 0.3);
+}
+
+.button.danger {
+    background: var(--danger-color);
+    color: var(--bg-primary);
+}
+
+.button.danger:hover {
+    background: var(--danger-hover);
+    transform: translateY(-2px);
+    box-shadow: 0 4px 15px rgba(231, 76, 60, 0.3);
+}
+
+.button.success {
+    background: var(--success-color);
+    color: var(--bg-primary);
+}
+
+.button.success:hover {
+    background: var(--success-hover);
+    transform: translateY(-2px);
+    box-shadow: 0 4px 15px rgba(39, 174, 96, 0.3);
+}
+
+.button.small {
+    padding: var(--spacing-sm) var(--spacing-md);
+    font-size: var(--font-size-sm);
+}
+
+.button-group {
+    display: flex;
+    gap: 0.75rem;
+    flex-wrap: wrap;
+}
+
+/* === テーブル === */
+.table-container {
+    overflow-x: auto;
+    border-radius: 6px;
+    border: 1px solid var(--border-color);
+    background: rgba(255, 255, 255, 0.8);
+    -webkit-backdrop-filter: blur(5px);
+    backdrop-filter: blur(5px);
+    transition: all 0.3s ease;
+}
+
+.table-container:hover {
+    transform: translateY(-1px);
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+}
+
+.records-table,
+.summary-table,
+.users-table {
+    width: 100%;
+    border-collapse: collapse;
+    font-size: var(--font-size-base);
+}
+
+.records-table th,
+.summary-table th,
+.users-table th {
+    background: var(--bg-secondary);
+    color: var(--text-primary);
+    padding: 0.8rem;
+    text-align: left;
+    font-weight: 600;
+    border-bottom: 2px solid var(--border-color);
+}
+
+.records-table td,
+.summary-table td,
+.users-table td {
+    padding: 0.8rem;
+    border-bottom: 1px solid var(--border-color);
+    vertical-align: middle;
+}
+
+.records-table tr:hover,
+.users-table tr:hover {
+    background: var(--bg-secondary);
+    transform: translateY(-1px);
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+    transition: all 0.3s ease;
+}
+
+.working-status {
+    color: var(--warning-color);
+    font-weight: 600;
+}
+
+.hours-value {
+    font-weight: 600;
+    color: var(--text-primary);
+}
+
+.no-data {
+    text-align: center;
+    color: var(--text-muted);
+    font-style: italic;
+    padding: var(--spacing-xl);
+}
+
+/* === ステータス関連 === */
+.status-badge {
+    padding: 0.3rem 0.7rem;
+    border-radius: 15px;
+    font-size: var(--font-size-sm);
+    font-weight: 500;
+}
+
+.status-badge.active {
+    background: var(--success-bg);
+    color: var(--success-text);
+}
+
+.status-badge.inactive {
+    background: var(--danger-bg);
+    color: var(--danger-text);
+}
+
+.role-badge {
+    padding: 0.3rem 0.7rem;
+    border-radius: 15px;
+    font-size: var(--font-size-sm);
+    font-weight: 500;
+}
+
+.role-badge.admin {
+    background: var(--info-bg);
+    color: var(--info-color);
+}
+
+.role-badge.employee {
+    background: #f3e5f5;
+    color: #7b1fa2;
+}
+
+.current-user-badge {
+    background: var(--warning-bg);
+    color: var(--warning-text);
+    font-size: var(--font-size-xs);
+    padding: 0.2rem var(--spacing-sm);
+    border-radius: 10px;
+    margin-left: var(--spacing-sm);
+}
+
+/* === グラフ === */
+.chart-container {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: var(--spacing-xl);
+}
+
+.chart-item {
+    background: var(--bg-secondary);
+    padding: var(--spacing-lg);
+    border-radius: 6px;
+    border: 1px solid var(--border-color);
+    transition: all 0.3s ease;
+}
+
+.chart-item:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 4px 15px rgba(102, 126, 234, 0.2);
+    border-color: var(--primary-color);
+}
+
+.bar-chart {
+    margin-top: var(--spacing-md);
+}
+
+.chart-row {
+    display: flex;
+    align-items: center;
+    margin-bottom: 0.75rem;
+    gap: var(--spacing-md);
+}
+
+.chart-label {
+    min-width: 100px;
+    font-weight: 500;
+    color: var(--text-primary);
+}
+
+.chart-bar {
+    display: flex;
+    align-items: center;
+}
+
+.bar-unit {
+    color: var(--primary-color);
+    font-size: var(--font-size-sm);
+}
+
+.chart-value {
+    margin-left: var(--spacing-md);
+    font-weight: 500;
+    color: var(--text-primary);
+}
+
+/* === インライン要素 === */
+.inline-form {
+    display: inline;
+}
+
+.table-actions {
+    white-space: nowrap;
+}
+
+.action-buttons {
+    display: flex;
+    gap: var(--spacing-sm);
+    align-items: center;
+}
+
+/* === 統計表示 === */
+.user-stats {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+    gap: var(--spacing-md);
+    margin-bottom: var(--spacing-lg);
+}
+
+.stat-item {
+    background: var(--bg-secondary);
+    padding: var(--spacing-md);
+    border-radius: 6px;
+    text-align: center;
+    border: 1px solid var(--border-color);
+    transition: all 0.3s ease;
+}
+
+.stat-item:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 4px 15px rgba(102, 126, 234, 0.2);
+    border-color: var(--primary-color);
+}
+
+.stat-value {
+    display: block;
+    font-size: 1.8rem;
+    font-weight: 700;
+    color: var(--primary-color);
+}
+
+.stat-label {
+    color: var(--text-muted);
+    font-size: var(--font-size-base);
+    margin-top: var(--spacing-xs);
+}
+
+/* === エンプティステート === */
+.empty-state {
+    text-align: center;
+    padding: 3rem var(--spacing-md);
+}
+
+.empty-icon {
+    font-size: 3rem;
+    color: var(--text-light);
+    margin-bottom: var(--spacing-md);
+}
+
+.empty-text {
+    font-size: var(--font-size-xl);
+    color: var(--text-primary);
+    font-weight: 500;
+    margin-bottom: var(--spacing-sm);
+}
+
+.empty-subtext {
+    color: var(--text-muted);
+    font-size: var(--font-size-base);
+}
+
+/* === フッター === */
+.page-footer {
+    background: transparent;
+    color: var(--text-light);
+    text-align: center;
+    padding: var(--spacing-lg);
+    margin-top: var(--spacing-xl);
+}
+
+/* === レスポンシブ対応 === */
+@media (max-width: 768px) {
+    .container {
+        margin: 1rem auto;
+        border-radius: 10px;
+    }
+    
+    .page-header {
+        padding: var(--spacing-md);
+        border-radius: 10px 10px 0 0;
+    }
+    
+    .page-footer {
+        border-radius: 0 0 10px 10px;
+    }
+    
+    .button:hover,
+    .nav-link:hover,
+    .form-group input:hover,
+    .form-group select:hover,
+    .records-table tr:hover,
+    .users-table tr:hover,
+    section:hover,
+    .table-container:hover,
+    .stat-item:hover,
+    .chart-item:hover,
+    .filter-form:hover,
+    .manual-form:hover {
+        transform: none;
+        box-shadow: none;
+    }
+    
+    .button:active,
+    .nav-link:active {
+        transform: translateY(1px);
+        box-shadow: 0 2px 8px rgba(0, 0, 0, 0.2);
+    }
+
+    .form-row,
+    .form-grid {
+        grid-template-columns: 1fr;
+    }
+    
+    .user-form-row {
+        grid-template-columns: 1fr;
+    }
+    
+    .user-form-row .form-group {
+        height: auto;
+    }
+    
+    .user-form-row .form-group input,
+    .user-form-row .form-group select {
+        margin-top: 0;
+    }
+    
+    .user-form-row .checkbox-form-group {
+        justify-content: flex-start;
+    }
+    
+    .button-group {
+        flex-direction: column;
+    }
+    
+    .table-container {
+        font-size: var(--font-size-sm);
+    }
+    
+    .action-buttons {
+        flex-direction: column;
+        gap: var(--spacing-xs);
+    }
+    
+    .chart-container {
+        grid-template-columns: 1fr;
+    }
+    
+    .user-stats {
+        grid-template-columns: 1fr;
+    }
+}
+
+@media (max-width: 480px) {
+    .nav-link {
+        padding: 0.75rem var(--spacing-md);
+        font-size: var(--font-size-base);
+    }
+    
+    .button {
+        padding: 0.6rem var(--spacing-md);
+        font-size: 0.85rem;
+    }
+    
+    .records-table th,
+    .records-table td {
+        padding: var(--spacing-sm);
+    }
+}
+
+/* フォームのFlexレイアウト */
+.form-grid {
+    display: flex !important;
+    flex-wrap: wrap !important;
+    gap: 1.5rem !important;
+    align-items: flex-start !important;
+    margin-bottom: 1rem;
+}
+
+.form-grid .form-group {
+    flex: 1 !important;
+    min-width: 200px !important;
+    display: block !important;
+    flex-direction: initial !important;
+}
+
+.form-grid .checkbox-form-group,
+.form-grid .form-group:has(.checkbox-group) {
+    flex-basis: 100%;
+    margin-top: 1rem;
+}
+
+@media (max-width: 768px) {
+    .form-grid {
+        flex-direction: column;
+        gap: 1rem;
+    }
+    
+    .form-grid .form-group {
+        min-width: auto;
+        flex: none;
+    }
+}

@@ -1,0 +1,314 @@
+/* === ユーザー管理専用スタイル === */
+
+/* ユーザー管理フォーム */
+.user-form-section {
+    background: rgba(255, 255, 255, 0.8);
+    -webkit-backdrop-filter: blur(5px);
+    backdrop-filter: blur(5px);
+    border-radius: 15px;
+    padding: 1.5rem;
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
+    transition: all 0.3s ease;
+    margin-bottom: 2rem;
+}
+
+.user-form-section:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 8px 25px rgba(0, 0, 0, 0.15);
+}
+
+.form-title {
+    color: #2196f3;
+    font-size: 1.3rem;
+    font-weight: 600;
+    display: flex;
+    align-items: center;
+    gap: 0.6rem;
+    margin-bottom: 1rem;
+    padding-bottom: 0.8rem;
+    border-bottom: 2px solid #e3f2fd;
+}
+
+.user-form {
+    background: rgba(248, 249, 250, 0.8);
+    -webkit-backdrop-filter: blur(5px);
+    backdrop-filter: blur(5px);
+    padding: var(--spacing-lg);
+    border-radius: 6px;
+    border: 1px solid var(--border-color);
+    transition: all 0.3s ease;
+}
+
+.user-form:hover {
+    transform: translateY(-1px);
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+    border-color: var(--primary-color);
+}
+
+/* パスワードリセットセクション */
+.password-reset-section {
+    background: rgba(255, 243, 224, 0.8);
+    -webkit-backdrop-filter: blur(5px);
+    backdrop-filter: blur(5px);
+    border: 1px solid #ffcc02;
+    border-radius: 8px;
+    padding: 1rem;
+    margin-top: 1rem;
+    transition: all 0.3s ease;
+}
+
+.password-reset-section:hover {
+    transform: translateY(-1px);
+    box-shadow: 0 4px 15px rgba(255, 193, 7, 0.2);
+}
+
+.password-reset-section h3 {
+    color: #f57c00;
+    font-size: 1.1rem;
+    font-weight: 600;
+    margin-bottom: 0.75rem;
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+}
+
+.reset-form {
+    margin: 0;
+    padding: 0;
+}
+
+/* ユーザーリストセクション */
+.user-list-section {
+    background: rgba(255, 255, 255, 0.8);
+    -webkit-backdrop-filter: blur(5px);
+    backdrop-filter: blur(5px);
+    border-radius: 15px;
+    padding: 1.5rem;
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
+    transition: all 0.3s ease;
+    margin-bottom: 2rem;
+}
+
+.user-list-section:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 8px 25px rgba(0, 0, 0, 0.15);
+}
+
+.user-list-section h2 {
+    color: #2196f3;
+    font-size: 1.3rem;
+    font-weight: 600;
+    display: flex;
+    align-items: center;
+    gap: 0.6rem;
+    margin-bottom: 1rem;
+    padding-bottom: 0.8rem;
+    border-bottom: 2px solid #e3f2fd;
+}
+
+/* ユーザー統計 */
+.user-stats {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+    gap: var(--spacing-md);
+    margin-bottom: var(--spacing-lg);
+}
+
+.stat-item {
+    background: var(--bg-secondary);
+    padding: var(--spacing-md);
+    border-radius: 6px;
+    text-align: center;
+    border: 1px solid var(--border-color);
+    transition: all 0.3s ease;
+}
+
+.stat-item:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 4px 15px rgba(102, 126, 234, 0.2);
+    border-color: var(--primary-color);
+}
+
+.stat-value {
+    display: block;
+    font-size: 1.8rem;
+    font-weight: 700;
+    color: var(--primary-color);
+}
+
+.stat-label {
+    color: var(--text-muted);
+    font-size: var(--font-size-base);
+    margin-top: var(--spacing-xs);
+}
+
+/* ユーザーテーブル */
+.users-table {
+    width: 100%;
+    border-collapse: collapse;
+    font-size: var(--font-size-base);
+}
+
+.users-table th {
+    background: var(--bg-secondary);
+    color: var(--text-primary);
+    padding: 0.8rem;
+    text-align: left;
+    font-weight: 600;
+    border-bottom: 2px solid var(--border-color);
+}
+
+.users-table td {
+    padding: 0.8rem;
+    border-bottom: 1px solid var(--border-color);
+    vertical-align: middle;
+}
+
+.users-table tr:hover {
+    background: var(--bg-secondary);
+    transform: translateY(-1px);
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+    transition: all 0.3s ease;
+}
+
+/* ユーザー情報表示 */
+.user-info {
+    display: flex;
+    align-items: center;
+    gap: var(--spacing-sm);
+}
+
+.user-info strong {
+    font-weight: 600;
+    color: var(--text-primary);
+}
+
+.current-user-badge {
+    background: var(--warning-bg);
+    color: var(--warning-text);
+    font-size: var(--font-size-xs);
+    padding: 0.2rem var(--spacing-sm);
+    border-radius: 10px;
+    margin-left: var(--spacing-sm);
+}
+
+/* ステータスコントロール */
+.status-controls {
+    display: flex;
+    align-items: center;
+    gap: var(--spacing-sm);
+}
+
+.toggle-form {
+    display: inline;
+    margin: 0;
+    padding: 0;
+}
+
+.toggle-form button {
+    margin: 0;
+    padding: 0.4rem 0.8rem;
+    font-size: var(--font-size-sm);
+}
+
+/* アクションボタン */
+.action-buttons {
+    display: flex;
+    gap: var(--spacing-sm);
+    align-items: center;
+}
+
+.delete-form {
+    display: inline;
+    margin: 0;
+    padding: 0;
+}
+
+.delete-form button {
+    margin: 0;
+    padding: 0.4rem 0.8rem;
+    font-size: var(--font-size-sm);
+}
+
+/* エンプティステート */
+.empty-state {
+    text-align: center;
+    padding: 3rem var(--spacing-md);
+}
+
+.empty-icon {
+    font-size: 3rem;
+    color: var(--text-light);
+    margin-bottom: var(--spacing-md);
+}
+
+.empty-text {
+    font-size: var(--font-size-xl);
+    color: var(--text-primary);
+    font-weight: 500;
+    margin-bottom: var(--spacing-sm);
+}
+
+.empty-subtext {
+    color: var(--text-muted);
+    font-size: var(--font-size-base);
+}
+
+/* 警告テキスト */
+.warning-text {
+    color: var(--warning-text);
+    font-weight: 500;
+}
+
+/* レスポンシブ対応 */
+@media (max-width: 768px) {
+    .user-form-section,
+    .user-list-section {
+        padding: 1rem;
+    }
+    
+    .user-stats {
+        grid-template-columns: 1fr;
+    }
+    
+    .action-buttons {
+        flex-direction: column;
+        gap: var(--spacing-xs);
+    }
+    
+    .status-controls {
+        flex-direction: column;
+        align-items: flex-start;
+        gap: var(--spacing-xs);
+    }
+    
+    .users-table {
+        font-size: var(--font-size-sm);
+    }
+    
+    .users-table th,
+    .users-table td {
+        padding: 0.6rem 0.4rem;
+    }
+}
+
+@media (max-width: 480px) {
+    .form-title {
+        font-size: 1.1rem;
+    }
+    
+    .user-list-section h2 {
+        font-size: 1.1rem;
+    }
+    
+    .users-table th,
+    .users-table td {
+        padding: 0.5rem 0.25rem;
+        font-size: 0.8rem;
+    }
+    
+    .button.small {
+        padding: 0.4rem 0.6rem;
+        font-size: 0.75rem;
+    }
+}
