@@ -61,8 +61,8 @@
 
         <main>
             <!-- 勤怠履歴フィルター -->
-            <section class="filter-section">
-                <h2>勤怠履歴フィルター</h2>
+            <section class="card-section">
+                <h2 class="card-title">🔍 勤怠履歴フィルター</h2>
                 <form action="attendance" method="get" class="filter-form">
                     <input type="hidden" name="action" value="filter">
                     
@@ -100,16 +100,16 @@
             </section>
 
             <!-- エクスポート機能 -->
-            <section class="export-section">
-                <h3>データエクスポート</h3>
+            <section class="card-section">
+                <h2 class="card-title">📊 データエクスポート</h2>
                 <a href="attendance?action=export_csv&filterUserId=<c:out value="${param.filterUserId}"/>&startDate=<c:out value="${param.startDate}"/>&endDate=<c:out value="${param.endDate}"/>" 
                    class="button secondary">
                     CSV エクスポート
                 </a>
             </section> 
              <!-- 勤怠サマリー -->
-            <section class="summary-section">
-                <h2>勤怠サマリー</h2>
+            <section class="card-section">
+                <h2 class="card-title">📈 勤怠サマリー</h2>
                 
                 <div class="summary-card">
                     <h3>合計労働時間</h3>
@@ -142,8 +142,8 @@
             </section>
 
             <!-- 月別統計グラフ -->
-            <section class="chart-section">
-                <h2>月別統計 (簡易グラフ)</h2>
+            <section class="card-section">
+                <h2 class="card-title">📊 月別統計 (簡易グラフ)</h2>
                 
                 <div class="chart-container">
                     <div class="chart-item">
@@ -188,8 +188,8 @@
                 </div>
             </section> 
              <!-- 詳細勤怠履歴 -->
-            <section class="records-section">
-                <h2>詳細勤怠履歴</h2>
+            <section class="card-section">
+                <h2 class="card-title">📋 詳細勤怠履歴</h2>
                 
                 <div class="table-container">
                     <table class="records-table">
@@ -265,8 +265,8 @@
             </section>
 
             <!-- 勤怠記録の手動追加 -->
-            <section class="manual-add-section">
-                <h2>勤怠記録の手動追加</h2>
+            <section class="card-section">
+                <h2 class="card-title">➕ 勤怠記録の手動追加</h2>
                 
                 <form action="attendance" method="post" class="manual-form">
                     <input type="hidden" name="action" value="add_manual">

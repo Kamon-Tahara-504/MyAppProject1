@@ -9,6 +9,7 @@
     <title>ユーザー管理 - 勤怠管理システム</title>
     <link rel="stylesheet" href="${pageContext.request.contextPath}/css/common.css">
     <link rel="stylesheet" href="${pageContext.request.contextPath}/css/user-management.css">
+    <link rel="stylesheet" href="${pageContext.request.contextPath}/css/admin.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
     <script>
         function validateUserForm() {
@@ -119,7 +120,6 @@
                             👤 ユーザー編集: <c:out value="${userToEdit.username}"/>
                         </c:when>
                         <c:otherwise>
-                            ユーザー追加
                             ➕ ユーザー追加
                         </c:otherwise>
                     </c:choose>
@@ -225,7 +225,6 @@
                 <!-- パスワードリセット（編集時のみ） -->
                 <c:if test="${userToEdit != null}">
                     <div class="password-reset-section">
-                        <h3>パスワード管理</h3>
                         <h3>🔑 パスワード管理</h3>
                         <form action="user" method="post" class="reset-form">
                             <input type="hidden" name="action" value="reset_password">
@@ -234,7 +233,6 @@
                             <button type="submit" 
                                     class="button warning"
                                     onclick="return confirmAction('reset_password', '${userToEdit.username}')">
-                                パスワードを「password」にリセット
                                 🔑 パスワードを「password」にリセット
                             </button>
                         </form>
@@ -244,7 +242,6 @@
             <!-- ユーザーリスト -->
             <section class="user-list-section">
                 <h2>既存ユーザー一覧</h2>
-                <h2>👥 既存ユーザー一覧</h2>
                 
                 <div class="user-stats">
                     <div class="stat-item">
@@ -313,9 +310,6 @@
                                     <td>
                                         <div class="status-controls">
                                             <span class="status-badge ${u.enabled ? 'active' : 'inactive'}">
-                                                ${u.enabled ? '有効' : '無効'}
-                                            </span>
-                                            <form action="user" method="post" class="toggle-form">
                                                 ${u.enabled ? '✅ 有効' : '❌ 無効'}
                                             </span>
                                                                                             <form action="user" method="post" class="toggle-form">
@@ -342,7 +336,6 @@
                                         <div class="action-buttons">
                                             <a href="user?action=edit&username=${u.username}" 
                                                class="button small primary">
-                                                編集
                                                 ✏️ 編集
                                             </a>
                                             <form action="user" method="post" class="delete-form">
@@ -352,7 +345,6 @@
                                                         class="button small danger"
                                                         onclick="return confirmAction('delete', '${u.username}')"
                                                         <c:if test="${u.username == user.username}">disabled title="自分のアカウントは削除できません"</c:if>>
-                                                    削除
                                                     🗑️ 削除
                                                 </button>
                                             </form>
