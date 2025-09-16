@@ -153,9 +153,37 @@
                                 <div class="chart-row">
                                     <span class="chart-label">${entry.key}:</span>
                                     <div class="chart-bar">
-                                        <c:forEach begin="1" end="${entry.value / 5}">
-                                            <span class="bar-unit">█</span>
-                                        </c:forEach>
+                                        <c:choose>
+                                            <c:when test="${entry.value >= 25}">
+                                                <c:forEach begin="1" end="5">
+                                                    <span class="bar-unit">█</span>
+                                                </c:forEach>
+                                            </c:when>
+                                            <c:when test="${entry.value >= 20}">
+                                                <c:forEach begin="1" end="4">
+                                                    <span class="bar-unit">█</span>
+                                                </c:forEach>
+                                            </c:when>
+                                            <c:when test="${entry.value >= 15}">
+                                                <c:forEach begin="1" end="3">
+                                                    <span class="bar-unit">█</span>
+                                                </c:forEach>
+                                            </c:when>
+                                            <c:when test="${entry.value >= 10}">
+                                                <c:forEach begin="1" end="2">
+                                                    <span class="bar-unit">█</span>
+                                                </c:forEach>
+                                            </c:when>
+                                            <c:when test="${entry.value >= 5}">
+                                                <span class="bar-unit">█</span>
+                                            </c:when>
+                                            <c:when test="${entry.value > 0}">
+                                                <span class="bar-unit">█</span>
+                                            </c:when>
+                                            <c:otherwise>
+                                                <span class="no-data">-</span>
+                                            </c:otherwise>
+                                        </c:choose>
                                     </div>
                                     <span class="chart-value">${entry.value}時間</span>
                                 </div>
@@ -173,9 +201,16 @@
                                 <div class="chart-row">
                                     <span class="chart-label">${entry.key}:</span>
                                     <div class="chart-bar">
-                                        <c:forEach begin="1" end="${entry.value}">
-                                            <span class="bar-unit">■</span>
-                                        </c:forEach>
+                                        <c:choose>
+                                            <c:when test="${entry.value > 0}">
+                                                <c:forEach begin="1" end="${entry.value}">
+                                                    <span class="bar-unit">■</span>
+                                                </c:forEach>
+                                            </c:when>
+                                            <c:otherwise>
+                                                <span class="no-data">-</span>
+                                            </c:otherwise>
+                                        </c:choose>
                                     </div>
                                     <span class="chart-value">${entry.value}日</span>
                                 </div>
@@ -237,7 +272,7 @@
                                             <input type="hidden" name="action" value="delete_manual">
                                             <input type="hidden" name="userId" value="${att.userId}">
                                             <input type="hidden" name="checkInTime" value="${att.checkInTime}">
-                                            <input type="hidden" name="checkOutTime" value="${att.checkOutTime}">
+                                            <input type="hidden" name="checkOutTime" value="${att.checkOutTime != null ? att.checkOutTime : ''}">
                                             <button type="submit" 
                                                     class="button danger small"
                                                     onclick="return confirm('本当にこの勤怠記録を削除しますか？');">

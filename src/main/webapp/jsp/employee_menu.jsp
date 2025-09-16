@@ -7,8 +7,9 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>従業員メニュー - 勤怠管理システム</title>
-    <link rel="stylesheet" href="${pageContext.request.contextPath}/css/common.css">
-    <link rel="stylesheet" href="${pageContext.request.contextPath}/css/employee.css">
+    <link rel="stylesheet" href="${pageContext.request.contextPath}/css/common.css?v=2">
+    <link rel="stylesheet" href="${pageContext.request.contextPath}/css/employee.css?v=2">
+    <link rel="stylesheet" href="${pageContext.request.contextPath}/css/admin.css?v=2">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
     <style>
         /* 確実に大きなボタンにするためのインラインCSS */
@@ -116,7 +117,7 @@
         }
     </style>
 </head>
-<body class="employee-layout">
+<body>
     <div class="container">
         <header class="page-header">
             <div class="header-content">
@@ -205,7 +206,7 @@
                                             <td>
                                                 <c:choose>
                                                     <c:when test="${att.checkInTime != null}">
-                                                        ${att.checkInTime.toLocalTime().toString()}
+                                                        ${att.checkInTime.toLocalTime().toString().substring(0, 5)}
                                                     </c:when>
                                                     <c:otherwise>未記録</c:otherwise>
                                                 </c:choose>
@@ -213,7 +214,7 @@
                                             <td>
                                                 <c:choose>
                                                     <c:when test="${att.checkOutTime != null}">
-                                                        ${att.checkOutTime.toLocalTime().toString()}
+                                                        ${att.checkOutTime.toLocalTime().toString().substring(0, 5)}
                                                     </c:when>
                                                     <c:otherwise><span class="working-status">勤務中</span></c:otherwise>
                                                 </c:choose>

@@ -204,15 +204,28 @@ public class AttendanceServlet extends HttpServlet {
             } 
         } else if ("delete_manual".equals(action) && "admin".equals(user.getRole())) { 
             String userId = req.getParameter("userId"); 
-            LocalDateTime checkIn = LocalDateTime.parse(req.getParameter("checkInTime")); 
-            LocalDateTime checkOut = req.getParameter("oldCheckOutTime") != null && !req.getParameter("oldCheckOutTime").isEmpty() ? 
-                    LocalDateTime.parse(req.getParameter("oldCheckOutTime")) : null; 
+            String checkInStr = req.getParameter("checkInTime");
+            String checkOutStr = req.getParameter("checkOutTime");
+            
+            try {
+                LocalDateTime checkIn = LocalDateTime.parse(checkInStr); 
+                LocalDateTime checkOut = (checkOutStr != null && !checkOutStr.isEmpty() && !"null".equals(checkOutStr)) ? 
+                        LocalDateTime.parse(checkOutStr) : null; 
 
-            if (attendanceDAO.deleteManualAttendance(userId, checkIn, checkOut)) { 
-                session.setAttribute("successMessage", "勤怠記録を削除しました。"); 
-            } else { 
-                session.setAttribute("errorMessage", "勤怠記録の削除に失敗しました。"); 
-            } 
+                System.out.println("DEBUG: Deleting attendance record - userId: " + userId + ", checkIn: " + checkIn + ", checkOut: " + checkOut);
+                
+                if (attendanceDAO.deleteManualAttendance(userId, checkIn, checkOut)) { 
+                    session.setAttribute("successMessage", "勤怠記録を削除しました。"); 
+                    System.out.println("DEBUG: Attendance record deleted successfully");
+                } else { 
+                    session.setAttribute("errorMessage", "勤怠記録の削除に失敗しました。"); 
+                    System.out.println("DEBUG: Failed to delete attendance record");
+                } 
+            } catch (Exception e) {
+                System.out.println("DEBUG: Error deleting attendance record: " + e.getMessage());
+                e.printStackTrace();
+                session.setAttribute("errorMessage", "勤怠記録の削除中にエラーが発生しました: " + e.getMessage());
+            }
         } else if ("bulk_delete".equals(action) && "admin".equals(user.getRole())) {
             int deletedCount = 0;
             int index = 0;
