@@ -99,14 +99,6 @@
                 </form>
             </section>
 
-            <!-- エクスポート機能 -->
-            <section class="card-section">
-                <h2 class="card-title">📊 データエクスポート</h2>
-                <a href="attendance?action=export_csv&filterUserId=<c:out value="${param.filterUserId}"/>&startDate=<c:out value="${param.startDate}"/>&endDate=<c:out value="${param.endDate}"/>" 
-                   class="button secondary">
-                    CSV エクスポート
-                </a>
-            </section> 
              <!-- 勤怠サマリー -->
             <section class="card-section">
                 <h2 class="card-title">📈 勤怠サマリー</h2>
@@ -224,7 +216,13 @@
             </section> 
              <!-- 詳細勤怠履歴 -->
             <section class="card-section">
-                <h2 class="card-title">📋 詳細勤怠履歴</h2>
+                <div class="section-header-with-button">
+                    <h2 class="card-title">📋 詳細勤怠履歴</h2>
+                    <a href="attendance?action=export_csv&filterUserId=<c:out value="${param.filterUserId}"/>&startDate=<c:out value="${param.startDate}"/>&endDate=<c:out value="${param.endDate}"/>" 
+                       class="button secondary">
+                        📊 CSV エクスポート
+                    </a>
+                </div>
                 
                 <div class="table-container">
                     <table class="records-table">

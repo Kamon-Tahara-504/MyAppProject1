@@ -239,6 +239,23 @@
     border-bottom: 2px solid #e3f2fd;
 }
 
+/* セクションヘッダーとボタンの横並びレイアウト */
+.section-header-with-button {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+    margin-bottom: 1rem;
+    padding-bottom: 0.8rem;
+    border-bottom: 2px solid #e3f2fd;
+}
+
+.section-header-with-button .card-title {
+    margin-bottom: 0;
+    padding-bottom: 0;
+    border-bottom: none;
+    flex-shrink: 0;
+}
+
 /* 勤怠打刻セクション */
 .clock-in-section {
     background: #ffffff;
@@ -771,6 +788,17 @@
         display: grid;
         grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
         gap: 1rem;
+    }
+}
+
+@media (max-width: 768px) {
+    .section-header-with-button {
+        flex-wrap: wrap;
+        gap: 0.5rem;
+    }
+    
+    .section-header-with-button .card-title {
+        margin-bottom: 0;
     }
 }
 
