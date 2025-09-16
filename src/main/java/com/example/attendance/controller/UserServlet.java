@@ -1,5 +1,6 @@
 package com.example.attendance.controller;
 
+import com.example.attendance.dao.AttendanceDAO;
 import com.example.attendance.dao.UserDAO;
 import com.example.attendance.dto.User;
 
@@ -87,14 +88,36 @@ public class UserServlet extends HttpServlet {
                 session.setAttribute("errorMessage", "ユーザーIDは既に存在します。");
             }
         } else if ("update".equals(action)) {
+            String originalUsername = req.getParameter("originalUsername");
             String username = req.getParameter("username");
             String role = req.getParameter("role");
             boolean enabled = req.getParameter("enabled") != null;
 
-            User existingUser = userDAO.findByUsername(username);
+            User existingUser = userDAO.findByUsername(originalUsername);
             if (existingUser != null) {
-                userDAO.updateUser(new User(username, existingUser.getPassword(), role, enabled));
-                session.setAttribute("successMessage", "ユーザー情報を更新しました。");
+                // ユーザーIDが変更された場合
+                if (!originalUsername.equals(username)) {
+                    // 新しいユーザーIDが既に存在するかチェック
+                    if (userDAO.findByUsername(username) != null) {
+                        session.setAttribute("errorMessage", "ユーザーID「" + username + "」は既に存在します。");
+                    } else {
+                        // 古いユーザーを削除して新しいユーザーを追加
+                        userDAO.deleteUser(originalUsername);
+                        userDAO.addUser(new User(username, existingUser.getPassword(), role, enabled));
+                        
+                        // 勤怠記録のユーザーIDも更新
+                        AttendanceDAO attendanceDAO = new AttendanceDAO();
+                        attendanceDAO.updateUserId(originalUsername, username);
+                        
+                        session.setAttribute("successMessage", "ユーザー情報を更新しました。（ユーザーID: " + originalUsername + " → " + username + "）");
+                    }
+                } else {
+                    // ユーザーIDが変更されていない場合は通常の更新
+                    userDAO.updateUser(new User(username, existingUser.getPassword(), role, enabled));
+                    session.setAttribute("successMessage", "ユーザー情報を更新しました。");
+                }
+            } else {
+                session.setAttribute("errorMessage", "ユーザーが見つかりません。");
             }
         } else if ("delete".equals(action)) {
             String username = req.getParameter("username");

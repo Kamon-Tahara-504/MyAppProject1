@@ -130,6 +130,14 @@ public class AttendanceDAO {
                 (att.getCheckOutTime() == null ? checkOut == null : att.getCheckOutTime().equals(checkOut))
         );
     }
+
+    public void updateUserId(String oldUserId, String newUserId) {
+        for (Attendance att : attendanceRecords) {
+            if (att.getUserId().equals(oldUserId)) {
+                att.setUserId(newUserId);
+            }
+        }
+    }
 }
 
 

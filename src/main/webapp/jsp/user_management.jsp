@@ -128,7 +128,7 @@
                 <form action="user" method="post" class="user-form" onsubmit="return validateUserForm()">
                     <input type="hidden" name="action" value="<c:choose><c:when test="${userToEdit != null}">update</c:when><c:otherwise>add</c:otherwise></c:choose>">
                     <c:if test="${userToEdit != null}">
-                        <input type="hidden" name="username" value="${userToEdit.username}">
+                        <input type="hidden" name="originalUsername" value="${userToEdit.username}">
                     </c:if>
 
                     <div class="form-row">
@@ -138,7 +138,6 @@
                                    id="username" 
                                    name="username" 
                                    value="<c:out value="${userToEdit.username}"/>" 
-                                   <c:if test="${userToEdit != null}">readonly</c:if>
                                    required
                                    placeholder="例: employee3"
                                    minlength="3"
@@ -299,10 +298,10 @@
                                         <span class="role-badge ${u.role}">
                                             <c:choose>
                                                 <c:when test="${u.role == 'admin'}">
-                                                    👨‍💻 管理者
+                                                    管理者
                                                 </c:when>
                                                 <c:otherwise>
-                                                    👨‍💼 従業員
+                                                    従業員
                                                 </c:otherwise>
                                             </c:choose>
                                         </span>

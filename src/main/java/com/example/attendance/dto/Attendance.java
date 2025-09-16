@@ -17,6 +17,10 @@ public class Attendance {
  
     public String getUserId() { 
         return userId; 
+    }
+
+    public void setUserId(String userId) {
+        this.userId = userId;
     } 
  
     public LocalDateTime getCheckInTime() { 
