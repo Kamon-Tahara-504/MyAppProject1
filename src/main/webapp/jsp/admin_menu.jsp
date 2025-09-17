@@ -62,7 +62,7 @@
         <main>
             <!-- 勤怠履歴フィルター -->
             <section class="card-section">
-                <h2 class="card-title">🔍 勤怠履歴フィルター</h2>
+                <h2 class="card-title">＋ 勤怠履歴フィルター</h2>
                 <form action="attendance" method="get" class="filter-form">
                     <input type="hidden" name="action" value="filter">
                     
@@ -93,7 +93,7 @@
                         </div>
                         
                         <div class="form-group">
-                            <button type="submit" class="button primary">🔍 フィルタ実行</button>
+                            <button type="submit" class="button primary">＋ フィルタ実行</button>
                         </div>
                     </div>
                 </form>
@@ -101,7 +101,7 @@
 
              <!-- 勤怠サマリー -->
             <section class="card-section">
-                <h2 class="card-title">📈 勤怠サマリー</h2>
+                <h2 class="card-title">＋ 勤怠サマリー</h2>
                 
                 <div class="summary-card">
                     <h3>合計労働時間</h3>
@@ -135,7 +135,7 @@
 
             <!-- 月別統計グラフ -->
             <section class="card-section">
-                <h2 class="card-title">📊 月別統計 (簡易グラフ)</h2>
+                <h2 class="card-title">＋ 月別統計 (簡易グラフ)</h2>
                 
                 <div class="chart-container">
                     <div class="chart-item">
@@ -217,10 +217,10 @@
              <!-- 詳細勤怠履歴 -->
             <section class="card-section">
                 <div class="section-header-with-button">
-                    <h2 class="card-title">📋 詳細勤怠履歴</h2>
+                    <h2 class="card-title">＋ 詳細勤怠履歴</h2>
                     <a href="attendance?action=export_csv&filterUserId=<c:out value="${param.filterUserId}"/>&startDate=<c:out value="${param.startDate}"/>&endDate=<c:out value="${param.endDate}"/>" 
                        class="button secondary">
-                        📊 CSV エクスポート
+                        ＋ CSV エクスポート
                     </a>
                 </div>
                 

@@ -117,7 +117,7 @@
                 <h2 class="form-title">
                     <c:choose>
                         <c:when test="${userToEdit != null}">
-                            👤 ユーザー編集: <c:out value="${userToEdit.username}"/>
+                            ＋ ユーザー編集: <c:out value="${userToEdit.username}"/>
                         </c:when>
                         <c:otherwise>
                             ➕ ユーザー追加
@@ -170,10 +170,10 @@
                             <label for="role">役割 *</label>
                             <select id="role" name="role" required>
                                 <option value="employee" <c:if test="${userToEdit.role == 'employee'}">selected</c:if>>
-                                    👨‍💼 従業員
+                                    従業員
                                 </option>
                                 <option value="admin" <c:if test="${userToEdit.role == 'admin'}">selected</c:if>>
-                                    👨‍💻 管理者
+                                    管理者
                                 </option>
                             </select>
                             <small>役割を選択してください</small>
@@ -224,7 +224,7 @@
                 <!-- パスワードリセット（編集時のみ） -->
                 <c:if test="${userToEdit != null}">
                     <div class="password-reset-section">
-                        <h3>🔑 パスワード管理</h3>
+                        <h3>＋ パスワード管理</h3>
                         <form action="user" method="post" class="reset-form">
                             <input type="hidden" name="action" value="reset_password">
                             <input type="hidden" name="username" value="${userToEdit.username}">
@@ -232,7 +232,7 @@
                             <button type="submit" 
                                     class="button warning"
                                     onclick="return confirmAction('reset_password', '${userToEdit.username}')">
-                                🔑 パスワードを「password」にリセット
+                                ＋ パスワードを「password」にリセット
                             </button>
                         </form>
                     </div>
@@ -309,7 +309,7 @@
                                     <td>
                                         <div class="status-controls">
                                             <span class="status-badge ${u.enabled ? 'active' : 'inactive'}">
-                                                ${u.enabled ? '✅ 有効' : '❌ 無効'}
+                                                ${u.enabled ? '有効' : '無効'}
                                             </span>
                                                                                             <form action="user" method="post" class="toggle-form">
                                                 <input type="hidden" name="action" value="toggle_enabled">
@@ -324,7 +324,7 @@
                                                             🚫 無効化
                                                         </c:when>
                                                         <c:otherwise>
-                                                            ✅ 有効化
+                                                            有効化
                                                         </c:otherwise>
                                                     </c:choose>
                                                 </button>
@@ -335,7 +335,7 @@
                                         <div class="action-buttons">
                                             <a href="user?action=edit&username=${u.username}" 
                                                class="button small primary">
-                                                ✏️ 編集
+                                                ＋ 編集
                                             </a>
                                             <form action="user" method="post" class="delete-form">
                                                 <input type="hidden" name="action" value="delete">
@@ -344,7 +344,7 @@
                                                         class="button small danger"
                                                         onclick="return confirmAction('delete', '${u.username}')"
                                                         <c:if test="${u.username == user.username}">disabled title="自分のアカウントは削除できません"</c:if>>
-                                                    🗑️ 削除
+                                                    ＋ 削除
                                                 </button>
                                             </form>
                                         </div>
@@ -355,7 +355,7 @@
                                 <tr>
                                     <td colspan="4" class="no-data">
                                         <div class="empty-state">
-                                            <div class="empty-icon">👥</div>
+                                            <div class="empty-icon">＋</div>
                                             <div class="empty-text">ユーザーがいません</div>
                                             <div class="empty-subtext">上のフォームから新しいユーザーを追加してください</div>
                                         </div>

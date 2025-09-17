@@ -156,7 +156,7 @@ public class AttendanceServlet extends HttpServlet {
                 System.out.println("DEBUG: User ID: " + user.getUsername());
                 attendanceDAO.checkIn(user.getUsername()); 
                 System.out.println("DEBUG: Check-in successful for user: " + user.getUsername());
-                session.setAttribute("successMessage", "✅ 出勤時刻を記録しました！お疲れ様です。"); 
+                session.setAttribute("successMessage", "＋ 出勤時刻を記録しました！お疲れ様です。"); 
             } catch (Exception e) {
                 System.out.println("DEBUG: Check-in failed for user: " + user.getUsername() + ", Error: " + e.getMessage());
                 System.out.println("DEBUG: Exception type: " + e.getClass().getName());
